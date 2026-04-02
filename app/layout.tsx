@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Plus_Jakarta_Sans, Sora } from "next/font/google";
 import MobileNav from "./mobile-nav";
+import ThemeSwitcher from "./theme-switcher";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -32,7 +33,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${sora.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${plusJakarta.variable} ${sora.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  const storageKey = "theme-preference";
+  const stored = localStorage.getItem(storageKey) || "system";
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const resolved = stored === "system" ? (prefersDark ? "dark" : "light") : stored;
+  document.documentElement.setAttribute("data-theme", resolved);
+})();`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[color:var(--surface-soft)]/90 backdrop-blur-md">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-5 md:px-8">
@@ -132,6 +150,9 @@ export default function RootLayout({
                   <p>Lucknow / Prayagraj, India</p>
                   <p>Operations: Domestic BPO</p>
                   <p>Web: socialmoon.in</p>
+                </div>
+                <div className="mt-5">
+                  <ThemeSwitcher />
                 </div>
               </div>
             </div>
