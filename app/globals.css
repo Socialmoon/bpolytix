@@ -10,6 +10,8 @@
   --brand-deep: #1a66ac;
   --line: #cfe3f6;
   --accent: #6ec2ff;
+  --mobile-nav-overlay: rgba(26, 84, 138, 0.22);
+  --mobile-nav-surface: rgba(235, 245, 255, 0.88);
 }
 
 [data-theme="dark"] {
@@ -22,6 +24,8 @@
   --brand-deep: #3b95df;
   --line: #1d3d5c;
   --accent: #95d5ff;
+  --mobile-nav-overlay: rgba(0, 0, 0, 0.35);
+  --mobile-nav-surface: rgba(8, 24, 40, 0.9);
 }
 
 @theme inline {
@@ -47,6 +51,14 @@ footer {
 body.mobile-nav-open main,
 body.mobile-nav-open footer {
   filter: blur(10px);
+}
+
+.mobile-nav-overlay {
+  background: var(--mobile-nav-overlay);
+}
+
+.mobile-nav-sheet {
+  background: var(--mobile-nav-surface);
 }
 
 html,

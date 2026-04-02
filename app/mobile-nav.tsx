@@ -77,7 +77,7 @@ export default function MobileNav() {
       </button>
 
       <div
-        className={`fixed inset-x-0 bottom-0 top-[72px] z-40 bg-black/30 backdrop-blur-md transition-opacity duration-300 ${
+        className={`mobile-nav-overlay fixed inset-x-0 bottom-0 top-[72px] z-40 backdrop-blur-md transition-opacity duration-300 ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -90,7 +90,7 @@ export default function MobileNav() {
       </div>
 
       <nav
-        className={`fixed inset-x-0 bottom-0 top-[72px] z-40 flex flex-col bg-[color:var(--surface)]/80 px-5 pb-8 pt-6 backdrop-blur-xl transition-all duration-300 ease-out ${
+        className={`mobile-nav-sheet fixed inset-x-0 bottom-0 top-[72px] z-40 flex flex-col px-5 pb-8 pt-6 backdrop-blur-xl transition-all duration-300 ease-out ${
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
         }`}
         aria-hidden={!open}
