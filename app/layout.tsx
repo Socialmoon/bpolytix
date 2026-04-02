@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     "BPOlytix is a growth-focused BPO and contact center brand powered by SocialMoon.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,23 +75,23 @@ export default function RootLayout({
               </Link>
             </nav>
           </div>
-          <nav className="mx-auto flex w-full max-w-6xl gap-4 overflow-x-auto px-5 pb-4 text-sm font-medium text-[var(--text-soft)] md:hidden">
-            <Link href="/about" className="whitespace-nowrap link-hover">
+          <nav className="mx-auto grid w-full max-w-6xl grid-cols-3 gap-2 px-5 pb-4 text-center text-sm font-medium text-[var(--text-soft)] md:hidden">
+            <Link href="/about" className="rounded-lg px-2 py-2 link-hover">
               About
             </Link>
-            <Link href="/services" className="whitespace-nowrap link-hover">
+            <Link href="/services" className="rounded-lg px-2 py-2 link-hover">
               Services
             </Link>
-            <Link href="/careers" className="whitespace-nowrap link-hover">
+            <Link href="/careers" className="rounded-lg px-2 py-2 link-hover">
               Careers
             </Link>
-            <Link href="/why-us" className="whitespace-nowrap link-hover">
+            <Link href="/why-us" className="rounded-lg px-2 py-2 link-hover">
               Why Us
             </Link>
-            <Link href="/case-studies" className="whitespace-nowrap link-hover">
+            <Link href="/case-studies" className="rounded-lg px-2 py-2 link-hover">
               Case Studies
             </Link>
-            <Link href="/contact" className="whitespace-nowrap link-hover">
+            <Link href="/contact" className="rounded-lg px-2 py-2 link-hover">
               Contact
             </Link>
           </nav>
@@ -116,7 +121,7 @@ export default function RootLayout({
 
               <div>
                 <p className="text-sm font-semibold text-[var(--text-strong)]">Quick Links</p>
-                <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-[var(--text-soft)]">
+                <div className="mt-3 grid grid-cols-1 gap-x-4 gap-y-2 text-sm text-[var(--text-soft)] sm:grid-cols-2">
                   <Link className="link-hover" href="/services">
                     Services
                   </Link>

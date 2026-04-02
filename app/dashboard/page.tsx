@@ -65,10 +65,10 @@ export default async function DashboardPage() {
             ) : (
               submissions.contact.map((item) => (
                 <article key={item.id} className="rounded-xl bg-[var(--surface-soft)] p-4">
-                  <p className="font-semibold text-[var(--text-strong)]">{item.name}</p>
-                  <p className="mt-1 text-sm text-[var(--text-soft)]">{item.email}</p>
-                  <p className="text-sm text-[var(--text-soft)]">{item.company}</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{item.message}</p>
+                  <p className="break-words font-semibold text-[var(--text-strong)]">{item.name}</p>
+                  <p className="mt-1 break-all text-sm text-[var(--text-soft)]">{item.email}</p>
+                  <p className="break-words text-sm text-[var(--text-soft)]">{item.company}</p>
+                  <p className="mt-2 break-words text-sm leading-6 text-[var(--text-soft)]">{item.message}</p>
                   <p className="mt-2 text-xs text-[var(--text-soft)]">
                     {new Date(item.createdAt).toLocaleString()}
                   </p>
@@ -88,11 +88,11 @@ export default async function DashboardPage() {
             ) : (
               submissions.careers.map((item) => (
                 <article key={item.id} className="rounded-xl bg-[var(--surface-soft)] p-4">
-                  <p className="font-semibold text-[var(--text-strong)]">{item.fullName}</p>
-                  <p className="mt-1 text-sm text-[var(--text-soft)]">{item.email}</p>
-                  <p className="text-sm text-[var(--text-soft)]">{item.phone}</p>
-                  <p className="text-sm text-[var(--text-soft)]">Applied for: {item.position}</p>
-                  <p className="mt-2 text-sm leading-6 text-[var(--text-soft)]">{item.message}</p>
+                  <p className="break-words font-semibold text-[var(--text-strong)]">{item.fullName}</p>
+                  <p className="mt-1 break-all text-sm text-[var(--text-soft)]">{item.email}</p>
+                  <p className="break-words text-sm text-[var(--text-soft)]">{item.phone}</p>
+                  <p className="break-words text-sm text-[var(--text-soft)]">Applied for: {item.position}</p>
+                  <p className="mt-2 break-words text-sm leading-6 text-[var(--text-soft)]">{item.message}</p>
                   <p className="mt-2 text-xs text-[var(--text-soft)]">
                     {new Date(item.createdAt).toLocaleString()}
                   </p>
