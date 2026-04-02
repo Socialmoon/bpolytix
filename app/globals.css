@@ -27,6 +27,16 @@ body {
   font-family: var(--font-plus-jakarta), "Segoe UI", sans-serif;
 }
 
+main,
+footer {
+  transition: filter 0.25s ease;
+}
+
+body.mobile-nav-open main,
+body.mobile-nav-open footer {
+  filter: blur(10px);
+}
+
 html,
 body {
   width: 100%;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Plus_Jakarta_Sans, Sora } from "next/font/google";
+import MobileNav from "./mobile-nav";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -34,15 +35,15 @@ export default function RootLayout({
     <html lang="en" className={`${plusJakarta.variable} ${sora.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[color:var(--surface-soft)]/90 backdrop-blur-md">
-          <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
+          <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-5 md:px-8">
             <Link href="/" className="group">
               <div>
                 <p className="font-display text-xl font-semibold tracking-tight text-[var(--text-strong)] md:text-2xl">
                   BPOlytix
                 </p>
                 <div className="mt-1 flex flex-wrap items-center gap-2 text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--text-soft)] group-hover:text-[var(--brand)] sm:text-xs sm:tracking-[0.17em]">
-                  <span className="hidden sm:inline">BPOlytix | Powered by SocialMoon</span>
-                  <span className="sm:hidden">Powered by SocialMoon</span>
+                  <span className="hidden lg:inline">BPOlytix | Powered by SocialMoon</span>
+                  <span className="lg:hidden">Powered by SocialMoon</span>
                   <Image
                     src="/logo.png"
                     alt="SocialMoon logo"
@@ -54,7 +55,7 @@ export default function RootLayout({
                 </div>
               </div>
             </Link>
-            <nav className="hidden items-center gap-5 text-sm font-medium text-[var(--text-soft)] md:flex">
+            <nav className="hidden items-center gap-4 text-xs font-medium text-[var(--text-soft)] lg:gap-5 lg:text-sm md:flex">
               <Link href="/about" className="link-hover">
                 About
               </Link>
@@ -70,31 +71,13 @@ export default function RootLayout({
               <Link href="/case-studies" className="link-hover">
                 Case Studies
               </Link>
-              <Link href="/contact" className="rounded-full bg-[var(--brand)] px-4 py-2 text-white transition hover:bg-[var(--brand-deep)]">
+              <Link href="/contact" className="rounded-full bg-[var(--brand)] px-3 py-2 text-white transition hover:bg-[var(--brand-deep)] lg:px-4">
                 Contact
               </Link>
             </nav>
+
+            <MobileNav />
           </div>
-          <nav className="mx-auto grid w-full max-w-6xl grid-cols-3 gap-2 px-5 pb-4 text-center text-sm font-medium text-[var(--text-soft)] md:hidden">
-            <Link href="/about" className="rounded-lg px-2 py-2 link-hover">
-              About
-            </Link>
-            <Link href="/services" className="rounded-lg px-2 py-2 link-hover">
-              Services
-            </Link>
-            <Link href="/careers" className="rounded-lg px-2 py-2 link-hover">
-              Careers
-            </Link>
-            <Link href="/why-us" className="rounded-lg px-2 py-2 link-hover">
-              Why Us
-            </Link>
-            <Link href="/case-studies" className="rounded-lg px-2 py-2 link-hover">
-              Case Studies
-            </Link>
-            <Link href="/contact" className="rounded-lg px-2 py-2 link-hover">
-              Contact
-            </Link>
-          </nav>
         </header>
         <main className="flex-1">{children}</main>
         <footer className="border-t border-[var(--line)] bg-[var(--surface)]">
