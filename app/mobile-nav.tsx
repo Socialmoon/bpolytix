@@ -90,7 +90,7 @@ export default function MobileNav() {
       </div>
 
       <nav
-        className={`fixed inset-x-0 bottom-0 top-[72px] z-40 flex flex-col bg-[rgba(244,245,239,0.72)] px-5 pb-8 pt-6 backdrop-blur-xl transition-all duration-300 ease-out ${
+        className={`fixed inset-x-0 bottom-0 top-[72px] z-40 flex flex-col bg-[color:var(--surface)]/80 px-5 pb-8 pt-6 backdrop-blur-xl transition-all duration-300 ease-out ${
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
         }`}
         aria-hidden={!open}
