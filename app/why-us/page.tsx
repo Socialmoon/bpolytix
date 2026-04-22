@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Why Choose BPOlytix for Domestic BPO",
+  description:
+    "See why businesses choose BPOlytix for accountable delivery, transparent reporting, and quality-driven customer engagement workflows.",
+  path: "/why-us",
+  keywords: ["why choose BPO", "domestic contact center", "BPO partner India"],
+});
+
 const differentiators = [
   {
     title: "Domain-Focused Teams",
@@ -51,9 +62,42 @@ const engagementModel = [
   "Scale planning based on validated process stability",
 ];
 
+const whyUsBreadcrumb = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Why Us", path: "/why-us" },
+]);
+
+const whyUsFaqs = [
+  {
+    question: "What makes BPOlytix different from generic call centers?",
+    answer:
+      "BPOlytix combines domain-focused teams, daily analytics visibility, and governance-led quality systems instead of only focusing on call volume.",
+  },
+  {
+    question: "How does BPOlytix reduce campaign execution risk?",
+    answer:
+      "Execution risk is reduced using documented scripts, escalation standards, role-based controls, and routine QA feedback loops.",
+  },
+  {
+    question: "Is BPOlytix suitable for scaling campaigns after pilot stage?",
+    answer:
+      "Yes. The delivery model is designed to launch lean, validate stability, and then scale while preserving process discipline.",
+  },
+];
+
+const whyUsFaqSchema = faqJsonLd(whyUsFaqs);
+
 export default function WhyUsPage() {
   return (
     <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(whyUsBreadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(whyUsFaqSchema) }}
+      />
       <div className="max-w-3xl hero-reveal">
         <p className="badge">Why BPOlytix</p>
         <h1 className="mt-4 font-display text-4xl tracking-tight text-[var(--text-strong)] md:text-5xl">
@@ -115,6 +159,21 @@ export default function WhyUsPage() {
             <p key={step} className="rounded-xl bg-[var(--surface-soft)] p-4">
               {step}
             </p>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-10 card p-6 md:p-8">
+        <p className="badge">Decision FAQs</p>
+        <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--text-strong)]">
+          Straight answers for leadership teams evaluating a BPO partner
+        </h2>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {whyUsFaqs.map((item) => (
+            <article key={item.question} className="rounded-xl bg-[var(--surface-soft)] p-4">
+              <h3 className="font-semibold text-[var(--text-strong)]">{item.question}</h3>
+              <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{item.answer}</p>
+            </article>
           ))}
         </div>
       </div>

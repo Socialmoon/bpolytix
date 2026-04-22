@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Plus_Jakarta_Sans, Sora } from "next/font/google";
+import {
+  localBusinessJsonLd,
+  organizationJsonLd,
+  siteConfig,
+} from "@/lib/seo";
 import MobileNav from "./mobile-nav";
 import ThemeSwitcher from "./theme-switcher";
 import "./globals.css";
@@ -17,15 +22,59 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "BPOlytix | Powered by SocialMoon",
-  description:
-    "BPOlytix is a growth-focused BPO and contact center brand powered by SocialMoon.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.defaultTitle,
+    template: siteConfig.titleTemplate,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  category: "Business Process Outsourcing",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    url: "/",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    images: [siteConfig.twitterImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
+    },
+  },
 };
 
 export const viewport = {
   width: "device-width",
   initialScale: 1,
 };
+
+const organizationSchema = organizationJsonLd();
+const localBusinessSchema = localBusinessJsonLd();
 
 export default function RootLayout({
   children,
@@ -49,6 +98,14 @@ export default function RootLayout({
   document.documentElement.setAttribute("data-theme", resolved);
 })();`,
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </head>
       <body className="min-h-full flex flex-col">

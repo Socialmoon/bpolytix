@@ -1,8 +1,27 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "About Our BPO Team and Delivery Model",
+  description:
+    "Learn how BPOlytix combines quality governance, training, and practical operations to support customer engagement and revenue growth.",
+  path: "/about",
+  keywords: ["about BPOlytix", "BPO company Lucknow", "contact center team India"],
+});
+
+const aboutBreadcrumb = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+]);
 
 export default function AboutPage() {
   return (
     <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumb) }}
+      />
       <div className="max-w-3xl hero-reveal">
         <p className="badge">About BPOlytix</p>
         <h1 className="mt-4 font-display text-4xl tracking-tight text-[var(--text-strong)] md:text-5xl">

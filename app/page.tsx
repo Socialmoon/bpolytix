@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { buildMetadata, faqJsonLd } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "BPO Services in Lucknow and Uttar Pradesh",
+  description:
+    "BPOlytix provides domestic customer support, lead generation, and scalable contact center services for businesses in Lucknow, Uttar Pradesh, and across India.",
+  path: "/",
+  keywords: [
+    "BPO services in Lucknow",
+    "domestic call center India",
+    "lead generation outsourcing",
+    "customer support BPO",
+    "BPOlytix",
+  ],
+});
 
 export default function Home() {
   const highlights = [
@@ -36,8 +52,32 @@ export default function Home() {
     },
   ];
 
+  const homeFaqs = [
+    {
+      question: "What services does BPOlytix provide?",
+      answer:
+        "BPOlytix provides customer support, inbound and outbound calling, lead generation, and CRM-backed process operations for growing businesses.",
+    },
+    {
+      question: "Which locations does BPOlytix primarily serve?",
+      answer:
+        "BPOlytix is based in Lucknow and Prayagraj and serves domestic campaigns across Uttar Pradesh and India.",
+    },
+    {
+      question: "How does BPOlytix maintain service quality?",
+      answer:
+        "Service quality is maintained through monitored interactions, QA scorecards, coaching loops, and structured performance reporting.",
+    },
+  ];
+
+  const homeFaqSchema = faqJsonLd(homeFaqs);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }}
+      />
       <section className="section">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div className="hero-reveal">
@@ -242,6 +282,23 @@ export default function Home() {
                 retraining overhead.
               </p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section pt-0">
+        <div className="card p-6 md:p-8">
+          <p className="badge">Quick Answers</p>
+          <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--text-strong)] md:text-4xl">
+            Answers decision-makers ask before choosing a BPO partner
+          </h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {homeFaqs.map((item) => (
+              <article key={item.question} className="rounded-2xl bg-[var(--surface-soft)] p-5">
+                <h3 className="text-base font-semibold text-[var(--text-strong)]">{item.question}</h3>
+                <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{item.answer}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import LogoutButton from "./logout-button";
 import { getDashboardSubmissions } from "@/lib/firebase-store";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Admin Dashboard",
+  description: "Protected admin dashboard for authorized BPOlytix operations users.",
+  path: "/dashboard",
+  noindex: true,
+});
 
 export default async function DashboardPage() {
   const cookieStore = await cookies();

@@ -1,8 +1,27 @@
+import type { Metadata } from "next";
 import ContactForm from "./contact-form";
+import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Contact BPOlytix for BPO Consultation",
+  description:
+    "Contact BPOlytix to discuss customer support, lead generation, and domestic BPO campaign planning for your business.",
+  path: "/contact",
+  keywords: ["contact BPO company", "BPO consultation", "Lucknow contact center partner"],
+});
+
+const contactBreadcrumb = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Contact", path: "/contact" },
+]);
 
 export default function ContactPage() {
   return (
     <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactBreadcrumb) }}
+      />
       <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="card p-6 md:p-8 hero-reveal">
           <p className="badge">Contact</p>

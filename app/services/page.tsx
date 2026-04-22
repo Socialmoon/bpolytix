@@ -1,3 +1,19 @@
+import type { Metadata } from "next";
+import { breadcrumbJsonLd, buildMetadata, faqJsonLd, serviceJsonLd } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Customer Support and Lead Generation Services",
+  description:
+    "Explore BPOlytix services including customer support, tele-calling, lead generation, CRM operations, and quality-monitored process management.",
+  path: "/services",
+  keywords: [
+    "BPO services",
+    "lead generation services India",
+    "customer support outsourcing",
+    "telecalling service Lucknow",
+  ],
+});
+
 const serviceGroups = [
   {
     title: "Customer Interaction Services",
@@ -28,9 +44,50 @@ const serviceGroups = [
   },
 ];
 
+const servicesBreadcrumb = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Services", path: "/services" },
+]);
+
+const servicesFaqs = [
+  {
+    question: "Which BPO services are best for early growth-stage businesses?",
+    answer:
+      "A strong starting stack is inbound support, outbound lead qualification, and CRM data management so teams can improve customer response and conversion speed.",
+  },
+  {
+    question: "Can BPOlytix run both support and sales workflows together?",
+    answer:
+      "Yes. BPOlytix can operate blended workflows where customer support and sales operations run with separate quality metrics and reporting visibility.",
+  },
+  {
+    question: "How do you track campaign quality in service delivery?",
+    answer:
+      "Campaign quality is tracked through call analytics, QA sampling, scorecards, and daily KPI dashboards shared with stakeholders.",
+  },
+];
+
+const servicesFaqSchema = faqJsonLd(servicesFaqs);
+const servicesSchema = serviceJsonLd(
+  "Domestic BPO, Customer Support, and Lead Generation Services",
+  "BPOlytix provides customer support, telecalling, lead generation, and back-office process management for businesses in Lucknow, Uttar Pradesh, and India.",
+);
+
 export default function ServicesPage() {
   return (
     <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesBreadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesFaqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      />
       <div className="max-w-3xl hero-reveal">
         <p className="badge">Services</p>
         <h1 className="mt-4 font-display text-4xl tracking-tight text-[var(--text-strong)] md:text-5xl">
@@ -67,6 +124,21 @@ export default function ServicesPage() {
           We run a practical stack with Zoho CRM, cloud dialers such as CallingPro or CloudTalk,
           and structured call analytics for manager visibility and agent performance improvement.
         </p>
+      </div>
+
+      <div className="mt-10 card p-6 md:p-8">
+        <p className="badge">Service FAQs</p>
+        <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--text-strong)]">
+          Direct answers to common service planning questions
+        </h2>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {servicesFaqs.map((item) => (
+            <article key={item.question} className="rounded-xl bg-[var(--surface-soft)] p-4">
+              <h3 className="font-semibold text-[var(--text-strong)]">{item.question}</h3>
+              <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{item.answer}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

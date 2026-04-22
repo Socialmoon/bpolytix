@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Case Studies and BPO Outcome Stories",
+  description:
+    "Review real operating scenarios showing how BPOlytix improves conversion, support responsiveness, and process consistency.",
+  path: "/case-studies",
+  keywords: ["BPO case studies", "customer support outcomes", "lead conversion case study"],
+});
+
 const studies = [
   {
     title: "EdTech Enrolment Campaign",
@@ -22,9 +33,18 @@ const studies = [
   },
 ];
 
+const caseStudiesBreadcrumb = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Case Studies", path: "/case-studies" },
+]);
+
 export default function CaseStudiesPage() {
   return (
     <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudiesBreadcrumb) }}
+      />
       <div className="max-w-3xl hero-reveal">
         <p className="badge">Case Studies</p>
         <h1 className="mt-4 font-display text-4xl tracking-tight text-[var(--text-strong)] md:text-5xl">
