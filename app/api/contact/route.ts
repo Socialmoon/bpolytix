@@ -18,6 +18,7 @@ export async function POST(request: Request) {
       message: body.message.trim(),
     });
   } catch (error) {
+    console.error("Contact submission failed:", error);
     const message = error instanceof Error ? error.message : "Firebase write failed.";
     return NextResponse.json({ message }, { status: 500 });
   }

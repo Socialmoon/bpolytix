@@ -7,30 +7,51 @@ export const size = {
   height: 630,
 };
 
+const containerStyle = {
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column" as const,
+  justifyContent: "space-between",
+  padding: 56,
+  background:
+    "linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #334155 100%)",
+  color: "#ffffff",
+  fontFamily: "Arial, sans-serif",
+};
+
+const headerStyle = {
+  fontSize: 34,
+  letterSpacing: 3,
+  textTransform: "uppercase" as const,
+  opacity: 0.85,
+};
+
+const headlineStyle = {
+  fontSize: 78,
+  fontWeight: 800,
+  lineHeight: 1.1,
+  maxWidth: 900,
+};
+
+const tagsStyle = {
+  display: "flex",
+  gap: 16,
+  fontSize: 30,
+  opacity: 0.9,
+};
+
 export default function OpenGraphImage() {
   return new ImageResponse(
     (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: 56,
-          background:
-            "linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #334155 100%)",
-          color: "#ffffff",
-          fontFamily: "Arial, sans-serif",
-        }}
-      >
-        <div style={{ fontSize: 34, letterSpacing: 3, textTransform: "uppercase", opacity: 0.85 }}>
+      <div style={containerStyle}>
+        <div style={headerStyle}>
           BPOlytix | Powered by SocialMoon
         </div>
-        <div style={{ fontSize: 78, fontWeight: 800, lineHeight: 1.1, maxWidth: 900 }}>
-          Smart Calls. Smarter Results.
+        <div style={headlineStyle}>
+          BPO Services for Smart Calls and Smarter Results.
         </div>
-        <div style={{ display: "flex", gap: 16, fontSize: 30, opacity: 0.9 }}>
+        <div style={tagsStyle}>
           <span>Domestic BPO</span>
           <span>Lucknow</span>
           <span>India</span>
@@ -40,3 +61,4 @@ export default function OpenGraphImage() {
     size,
   );
 }
+

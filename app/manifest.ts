@@ -5,21 +5,21 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "BPOlytix",
     short_name: "BPOlytix",
     description:
-      "BPOlytix provides domestic BPO and contact center services for growth-focused businesses.",
+      "BPOlytix provides domestic BPO services, customer support outsourcing, and lead generation for growth-focused businesses.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#0f172a",
     icons: [
       {
-        src: "/logo.png",
+        src: "/logo-nav.jpeg",
         sizes: "192x192",
-        type: "image/png",
+        type: "image/jpeg",
       },
       {
-        src: "/logo.png",
+        src: "/logo-nav.jpeg",
         sizes: "512x512",
-        type: "image/png",
+        type: "image/jpeg",
       },
     ],
   };

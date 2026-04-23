@@ -24,6 +24,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Invalid credentials." }, { status: 401 });
     }
   } catch (error) {
+    console.error("Admin login failed:", error);
     const message = error instanceof Error ? error.message : "Firebase auth check failed.";
     return NextResponse.json({ message }, { status: 500 });
   }
