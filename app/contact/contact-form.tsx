@@ -57,10 +57,9 @@ export default function ContactForm() {
   }
 
   return (
-    <form className="card p-6 md:p-8" onSubmit={onSubmit}>
-      <h2 className="font-display text-2xl font-semibold text-[var(--text-strong)]">Project Inquiry</h2>
-      <div className="mt-5 grid gap-4">
-        <label className="text-sm font-medium text-[var(--text-soft)]" htmlFor="name">
+    <form className="space-y-6 rounded-lg border border-border/50 bg-card/50 p-8 backdrop-blur" onSubmit={onSubmit}>
+      <div>
+        <label className="text-sm font-medium text-foreground" htmlFor="name">
           Full Name
         </label>
         <input
@@ -70,11 +69,13 @@ export default function ContactForm() {
           required
           value={form.name}
           onChange={(e) => update("name", e.target.value)}
-          className="rounded-xl border border-[var(--line)] bg-[var(--surface-soft)] px-4 py-3 outline-none ring-0 transition focus:border-[var(--brand)]"
+          className="mt-2 w-full rounded-lg border border-border bg-card/50 px-4 py-2.5 text-foreground outline-none transition focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-muted-foreground"
           placeholder="Enter your full name"
         />
+      </div>
 
-        <label className="text-sm font-medium text-[var(--text-soft)]" htmlFor="email">
+      <div>
+        <label className="text-sm font-medium text-foreground" htmlFor="email">
           Work Email
         </label>
         <input
@@ -84,11 +85,13 @@ export default function ContactForm() {
           required
           value={form.email}
           onChange={(e) => update("email", e.target.value)}
-          className="rounded-xl border border-[var(--line)] bg-[var(--surface-soft)] px-4 py-3 outline-none ring-0 transition focus:border-[var(--brand)]"
+          className="mt-2 w-full rounded-lg border border-border bg-card/50 px-4 py-2.5 text-foreground outline-none transition focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-muted-foreground"
           placeholder="name@company.com"
         />
+      </div>
 
-        <label className="text-sm font-medium text-[var(--text-soft)]" htmlFor="company">
+      <div>
+        <label className="text-sm font-medium text-foreground" htmlFor="company">
           Company
         </label>
         <input
@@ -98,12 +101,14 @@ export default function ContactForm() {
           required
           value={form.company}
           onChange={(e) => update("company", e.target.value)}
-          className="rounded-xl border border-[var(--line)] bg-[var(--surface-soft)] px-4 py-3 outline-none ring-0 transition focus:border-[var(--brand)]"
+          className="mt-2 w-full rounded-lg border border-border bg-card/50 px-4 py-2.5 text-foreground outline-none transition focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-muted-foreground"
           placeholder="Your company name"
         />
+      </div>
 
-        <label className="text-sm font-medium text-[var(--text-soft)]" htmlFor="message">
-          What outcomes are you targeting?
+      <div>
+        <label className="text-sm font-medium text-foreground" htmlFor="message">
+          What are your goals?
         </label>
         <textarea
           id="message"
@@ -112,23 +117,29 @@ export default function ContactForm() {
           required
           value={form.message}
           onChange={(e) => update("message", e.target.value)}
-          className="rounded-xl border border-[var(--line)] bg-[var(--surface-soft)] px-4 py-3 outline-none ring-0 transition focus:border-[var(--brand)]"
-          placeholder="Share goals, volumes, and timelines"
+          className="mt-2 w-full rounded-lg border border-border bg-card/50 px-4 py-2.5 text-foreground outline-none transition focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-muted-foreground"
+          placeholder="Share your business goals, challenges, and timeline"
         />
-
-        {status === "success" ? (
-          <p className="text-sm text-green-700">Thank you. Your inquiry has been submitted.</p>
-        ) : null}
-        {status === "error" ? <p className="text-sm text-red-600">{error}</p> : null}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="mt-2 rounded-full bg-[var(--brand)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--brand-deep)] disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          {loading ? "Submitting..." : "Submit Inquiry"}
-        </button>
       </div>
+
+      {status === "success" ? (
+        <div className="rounded-lg bg-emerald-500/10 p-4 text-sm text-emerald-400">
+          Thank you! Your inquiry has been submitted. We&apos;ll be in touch shortly.
+        </div>
+      ) : null}
+      {status === "error" ? (
+        <div className="rounded-lg bg-destructive/10 p-4 text-sm text-destructive">
+          {error}
+        </div>
+      ) : null}
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full rounded-lg bg-gradient-to-r from-primary to-secondary px-6 py-3 font-semibold text-primary-foreground transition hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        {loading ? "Submitting..." : "Submit Inquiry"}
+      </button>
     </form>
   );
 }

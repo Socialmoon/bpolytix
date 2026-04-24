@@ -13,15 +13,24 @@ function applyTheme(theme: ThemePreference) {
   root.setAttribute("data-theme", resolvedTheme);
 }
 
+function getInitialTheme(): ThemePreference {
+  if (typeof window === "undefined") {
+    return "system";
+  }
+
+  const storedTheme = localStorage.getItem(STORAGE_KEY);
+  if (storedTheme === "light" || storedTheme === "dark" || storedTheme === "system") {
+    return storedTheme;
+  }
+  return "system";
+}
+
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState<ThemePreference>("system");
+  const [theme, setTheme] = useState<ThemePreference>(getInitialTheme);
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem(STORAGE_KEY) as ThemePreference | null;
-    const initialTheme = storedTheme ?? "system";
-    setTheme(initialTheme);
-    applyTheme(initialTheme);
-  }, []);
+    applyTheme(theme);
+  }, [theme]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");

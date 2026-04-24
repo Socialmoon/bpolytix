@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#team", label: "Team" },
   { href: "/careers", label: "Careers" },
   { href: "/why-us", label: "Why Us" },
   { href: "/case-studies", label: "Case Studies" },
@@ -15,10 +17,6 @@ const links = [
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     if (!open) {
@@ -43,13 +41,16 @@ export default function MobileNav() {
     };
   }, [open]);
 
+  function closeMenu() {
+    setOpen(false);
+  }
+
   return (
     <div className="md:hidden">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface)] px-3 text-[var(--text-strong)] transition"
-        aria-expanded={open}
+        className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 text-white transition hover:border-white/40 hover:bg-white/10"
         aria-label="Toggle navigation menu"
       >
         <span className="text-xs font-semibold uppercase tracking-[0.09em]">Menu</span>
@@ -77,7 +78,7 @@ export default function MobileNav() {
       </button>
 
       <div
-        className={`mobile-nav-overlay fixed inset-x-0 bottom-0 top-[72px] z-40 backdrop-blur-md transition-opacity duration-300 ${
+        className={`mobile-nav-overlay fixed inset-x-0 bottom-0 top-[73px] z-40 backdrop-blur-md transition-opacity duration-300 ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -90,28 +91,28 @@ export default function MobileNav() {
       </div>
 
       <nav
-        className={`mobile-nav-sheet fixed inset-x-0 bottom-0 top-[72px] z-40 flex flex-col px-5 pb-8 pt-6 backdrop-blur-xl transition-all duration-300 ease-out ${
+        className={`mobile-nav-sheet fixed inset-x-0 bottom-0 top-[73px] z-40 flex flex-col px-5 pb-8 pt-6 backdrop-blur-xl transition-all duration-300 ease-out ${
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
         }`}
-        aria-hidden={!open}
       >
-        <div className="mb-4 border-b border-[var(--line)] pb-4">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--text-soft)]">
+        <div className="mb-4 border-b border-white/15 pb-4">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/55">
             Navigation
           </p>
         </div>
 
         <div className="grid gap-3">
           {links.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = link.href === "/#team" ? pathname === "/" : pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={closeMenu}
                 className={`block rounded-2xl border px-4 py-3.5 text-base font-semibold transition ${
                   isActive
-                    ? "border-[var(--brand)] bg-[var(--brand)] text-white"
-                    : "border-[var(--line)] bg-[var(--surface-soft)] text-[var(--text-strong)]"
+                    ? "border-white bg-white text-black"
+                    : "border-white/15 bg-white/5 text-white"
                 }`}
               >
                 {link.label}
@@ -123,7 +124,8 @@ export default function MobileNav() {
         <div className="mt-auto pt-4">
           <Link
             href="/contact"
-            className="block rounded-2xl bg-[var(--brand)] px-4 py-3.5 text-center text-base font-semibold text-white transition hover:bg-[var(--brand-deep)]"
+            onClick={closeMenu}
+            className="block rounded-2xl bg-white px-4 py-3.5 text-center text-base font-semibold text-black transition hover:bg-white/90"
           >
             Contact Us
           </Link>

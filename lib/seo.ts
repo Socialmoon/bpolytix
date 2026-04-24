@@ -4,9 +4,19 @@ export const siteConfig = {
   name: "BPOlytix",
   legalName: "BPOlytix",
   titleTemplate: "%s | BPOlytix",
-  defaultTitle: "BPO Services in Lucknow, Uttar Pradesh | BPOlytix",
+  defaultTitle: "BPO Company in Lucknow, India | BPOlytix",
   description:
-    "BPOlytix delivers domestic BPO, customer support, and lead generation services for growth-focused businesses in Lucknow, Uttar Pradesh, and across India.",
+    "BPOlytix is a domestic BPO company delivering customer support, call center outsourcing, and lead generation services for businesses in Lucknow, Uttar Pradesh, and across India.",
+  defaultKeywords: [
+    "bpo",
+    "bpo company",
+    "bpo services",
+    "domestic bpo services",
+    "call center outsourcing india",
+    "customer support bpo",
+    "lead generation bpo",
+    "bpo company in lucknow",
+  ],
   url: "https://bpolytix.in",
   locale: "en_IN",
   region: "IN-UP",
@@ -29,11 +39,15 @@ type BuildMetadataInput = {
 
 export function buildMetadata(input: BuildMetadataInput): Metadata {
   const canonical = input.path === "/" ? "/" : input.path;
+  const keywords = Array.from(
+    new Set([...(siteConfig.defaultKeywords ?? []), ...(input.keywords ?? [])]),
+  );
 
   return {
     title: input.title,
     description: input.description,
-    keywords: input.keywords,
+    keywords,
+    category: "Business Process Outsourcing",
     alternates: {
       canonical,
     },
@@ -86,6 +100,17 @@ export function buildMetadata(input: BuildMetadataInput): Metadata {
         },
   };
 }
+export function webSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    alternateName: siteConfig.legalName,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    inLanguage: "en-IN",
+  };
+}
 
 export function organizationJsonLd() {
   return {
@@ -93,7 +118,14 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: siteConfig.legalName,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.png`,
+    logo: `${siteConfig.url}/logo-nav.jpeg`,
+    description: siteConfig.description,
+    knowsAbout: [
+      "BPO services",
+      "Customer support outsourcing",
+      "Lead generation outsourcing",
+      "Domestic call center operations",
+    ],
     sameAs: [siteConfig.xProfile, siteConfig.instagramProfile],
     areaServed: {
       "@type": "AdministrativeArea",
@@ -105,14 +137,27 @@ export function organizationJsonLd() {
 export function localBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     name: siteConfig.legalName,
     url: siteConfig.url,
-    image: `${siteConfig.url}/logo.png`,
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: `${siteConfig.city}, ${siteConfig.state}, ${siteConfig.country}`,
+    image: `${siteConfig.url}/logo-nav.jpeg`,
+    description: siteConfig.description,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: siteConfig.city,
+      addressRegion: siteConfig.state,
+      addressCountry: "IN",
     },
+    areaServed: [
+      {
+        "@type": "AdministrativeArea",
+        name: `${siteConfig.state}, ${siteConfig.country}`,
+      },
+      {
+        "@type": "Country",
+        name: siteConfig.country,
+      },
+    ],
     serviceArea: {
       "@type": "Place",
       name: `${siteConfig.city}, ${siteConfig.state}, ${siteConfig.country}`,
@@ -164,5 +209,41 @@ export function faqJsonLd(items: Array<{ question: string; answer: string }>) {
         text: item.answer,
       },
     })),
+  };
+}
+
+export function articleJsonLd(input: {
+  headline: string;
+  description: string;
+  path: string;
+  publishedAt: string;
+  updatedAt?: string;
+  author: string;
+  image?: string;
+  keywords?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: input.headline,
+    description: input.description,
+    datePublished: input.publishedAt,
+    dateModified: input.updatedAt ?? input.publishedAt,
+    author: {
+      "@type": "Organization",
+      name: input.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.legalName,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/logo-nav.jpeg`,
+      },
+    },
+    image: input.image ? [`${siteConfig.url}${input.image}`] : undefined,
+    mainEntityOfPage: `${siteConfig.url}${input.path}`,
+    keywords: input.keywords?.join(", "),
+    inLanguage: "en-IN",
   };
 }

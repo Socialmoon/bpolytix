@@ -1,145 +1,70 @@
 import type { Metadata } from "next";
-import { breadcrumbJsonLd, buildMetadata, faqJsonLd, serviceJsonLd } from "@/lib/seo";
+import Link from "next/link";
+import { buildMetadata } from "@/lib/seo";
+import { services } from "@/lib/content/services";
+import { CtaStrip } from "@/components/premium/cta-strip";
+import { PageHero } from "@/components/premium/page-hero";
+import { ProofBand } from "@/components/premium/proof-band";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Customer Support and Lead Generation Services",
-  description:
-    "Explore BPOlytix services including customer support, tele-calling, lead generation, CRM operations, and quality-monitored process management.",
+  title: "BPO Services and Delivery Capabilities",
+  description: "Explore BPOlytix service lines across support, lead generation, quality, analytics, and workforce management.",
   path: "/services",
-  keywords: [
-    "BPO services",
-    "lead generation services India",
-    "customer support outsourcing",
-    "telecalling service Lucknow",
-  ],
+  keywords: ["bpo services", "customer support outsourcing", "lead generation services"],
 });
-
-const serviceGroups = [
-  {
-    title: "Customer Interaction Services",
-    points: [
-      "Inbound and outbound calling",
-      "Email and chat customer support",
-      "Appointment scheduling and confirmations",
-      "Feedback, survey, and verification calls",
-    ],
-  },
-  {
-    title: "Sales and Revenue Operations",
-    points: [
-      "Lead qualification and nurturing",
-      "Conversion-focused tele-sales campaigns",
-      "Order support and upsell workflows",
-      "Daily KPI dashboards for sales teams",
-    ],
-  },
-  {
-    title: "Data and Process Management",
-    points: [
-      "CRM data hygiene and pipeline updates",
-      "Call recording and interaction analytics",
-      "Performance scorecards and quality audits",
-      "Back-office process support",
-    ],
-  },
-];
-
-const servicesBreadcrumb = breadcrumbJsonLd([
-  { name: "Home", path: "/" },
-  { name: "Services", path: "/services" },
-]);
-
-const servicesFaqs = [
-  {
-    question: "Which BPO services are best for early growth-stage businesses?",
-    answer:
-      "A strong starting stack is inbound support, outbound lead qualification, and CRM data management so teams can improve customer response and conversion speed.",
-  },
-  {
-    question: "Can BPOlytix run both support and sales workflows together?",
-    answer:
-      "Yes. BPOlytix can operate blended workflows where customer support and sales operations run with separate quality metrics and reporting visibility.",
-  },
-  {
-    question: "How do you track campaign quality in service delivery?",
-    answer:
-      "Campaign quality is tracked through call analytics, QA sampling, scorecards, and daily KPI dashboards shared with stakeholders.",
-  },
-];
-
-const servicesFaqSchema = faqJsonLd(servicesFaqs);
-const servicesSchema = serviceJsonLd(
-  "Domestic BPO, Customer Support, and Lead Generation Services",
-  "BPOlytix provides customer support, telecalling, lead generation, and back-office process management for businesses in Lucknow, Uttar Pradesh, and India.",
-);
 
 export default function ServicesPage() {
   return (
-    <section className="section">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesBreadcrumb) }}
+    <>
+      <PageHero
+        badge="Services"
+        title="Service architecture for growth-focused operations"
+        description="Choose from modular service lines designed to improve customer outcomes, conversion quality, and operational reliability."
+        primaryCta={{ label: "Talk to Experts", href: "/contact" }}
+        secondaryCta={{ label: "View Industries", href: "/industries" }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesFaqSchema) }}
+
+      <ProofBand
+        items={[
+          { label: "Delivery disciplines", value: "6" },
+          { label: "Industry playbooks", value: "4" },
+          { label: "Outcome-led model", value: "100%" },
+          { label: "Governance cadence", value: "Weekly" },
+        ]}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
-      />
-      <div className="max-w-3xl hero-reveal">
-        <p className="badge">Services</p>
-        <h1 className="mt-4 font-display text-4xl tracking-tight text-[var(--text-strong)] md:text-5xl">
-          End-to-end BPO services for customer growth and operational stability
-        </h1>
-        <p className="mt-5 text-lg leading-8 text-[var(--text-soft)]">
-          Inspired by high-performing global BPM models, BPOlytix combines human expertise,
-          process discipline, and practical technology to improve customer outcomes at scale.
-        </p>
-      </div>
 
-      <div className="mt-10 grid gap-5 lg:grid-cols-3">
-        {serviceGroups.map((group) => (
-          <article key={group.title} className="card p-6">
-            <h2 className="font-display text-2xl font-semibold text-[var(--text-strong)]">
-              {group.title}
-            </h2>
-            <ul className="mt-4 space-y-2 text-sm leading-6 text-[var(--text-soft)]">
-              {group.points.map((point) => (
-                <li key={point} className="rounded-lg bg-[var(--surface-soft)] px-3 py-2">
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-
-      <div className="mt-10 card p-6 md:p-8">
-        <h2 className="font-display text-3xl tracking-tight text-[var(--text-strong)]">
-          Technology Stack
-        </h2>
-        <p className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-soft)]">
-          We run a practical stack with Zoho CRM, cloud dialers such as CallingPro or CloudTalk,
-          and structured call analytics for manager visibility and agent performance improvement.
-        </p>
-      </div>
-
-      <div className="mt-10 card p-6 md:p-8">
-        <p className="badge">Service FAQs</p>
-        <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--text-strong)]">
-          Direct answers to common service planning questions
-        </h2>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          {servicesFaqs.map((item) => (
-            <article key={item.question} className="rounded-xl bg-[var(--surface-soft)] p-4">
-              <h3 className="font-semibold text-[var(--text-strong)]">{item.question}</h3>
-              <p className="mt-2 text-sm leading-7 text-[var(--text-soft)]">{item.answer}</p>
+      <section className="section pt-0">
+        <div className="container-premium grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {services.map((service) => (
+            <article key={service.slug} className="card p-6 md:p-7">
+              <h2 className="font-display text-2xl text-[var(--text-strong)]">{service.name}</h2>
+              <p className="mt-3 leading-7 text-[var(--text-soft)]">{service.short}</p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {service.idealFor.slice(0, 3).map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-[var(--line)] px-2.5 py-1 text-xs font-semibold text-[var(--text-soft)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <Link
+                href={`/services/${service.slug}`}
+                className="mt-6 inline-flex rounded-full border border-[var(--line)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--text-strong)] transition hover:border-[var(--brand)]"
+              >
+                View Service Detail
+              </Link>
             </article>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+
+      <CtaStrip
+        title="Need a bundled operating model?"
+        body="We can combine support, lead generation, analytics, and workforce controls into a single phased delivery plan."
+        cta={{ label: "Book Consultation", href: "/contact" }}
+      />
+    </>
   );
 }

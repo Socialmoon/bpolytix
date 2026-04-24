@@ -1,37 +1,23 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, CalendarDays, TrendingUp } from "lucide-react";
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
+import { caseStudies } from "@/lib/content/insights";
+import { CtaStrip } from "@/components/premium/cta-strip";
+import { PageHero } from "@/components/premium/page-hero";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Case Studies and BPO Outcome Stories",
+  title: "BPO Case Studies and Customer Support Outcome Stories",
   description:
-    "Review real operating scenarios showing how BPOlytix improves conversion, support responsiveness, and process consistency.",
+    "Review real BPO operating scenarios showing how BPOlytix improves conversion, support responsiveness, and process consistency.",
   path: "/case-studies",
-  keywords: ["BPO case studies", "customer support outcomes", "lead conversion case study"],
+  keywords: [
+    "BPO case studies",
+    "customer support outcomes",
+    "lead conversion case study",
+    "bpo success stories",
+  ],
 });
-
-const studies = [
-  {
-    title: "EdTech Enrolment Campaign",
-    challenge: "Low response rate from warm leads and high callback delays.",
-    solution:
-      "BPOlytix deployed a 5-agent conversion desk with CRM tagging and same-day callback windows.",
-    result: "Lead-to-conversion ratio improved by 34% in 8 weeks.",
-  },
-  {
-    title: "Healthcare Appointment Desk",
-    challenge: "Missed follow-ups created scheduling gaps and patient dissatisfaction.",
-    solution:
-      "Introduced structured reminder calls, multilingual support, and quality score tracking.",
-    result: "No-show rates reduced by 27% with higher patient feedback scores.",
-  },
-  {
-    title: "D2C Customer Support Ramp-up",
-    challenge: "Rapid order growth caused slow support replies and inconsistent handling.",
-    solution:
-      "Established a blended voice and chat queue with issue categorization and escalation rules.",
-    result: "First-response times improved by 41% within the first quarter.",
-  },
-];
 
 const caseStudiesBreadcrumb = breadcrumbJsonLd([
   { name: "Home", path: "/" },
@@ -40,43 +26,83 @@ const caseStudiesBreadcrumb = breadcrumbJsonLd([
 
 export default function CaseStudiesPage() {
   return (
-    <section className="section">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudiesBreadcrumb) }}
       />
-      <div className="max-w-3xl hero-reveal">
-        <p className="badge">Case Studies</p>
-        <h1 className="mt-4 font-display text-4xl tracking-tight text-[var(--text-strong)] md:text-5xl">
-          Outcome-driven stories from real operating playbooks
-        </h1>
-        <p className="mt-5 text-lg leading-8 text-[var(--text-soft)]">
-          These examples reflect the kind of measurable impact BPOlytix is designed to deliver
-          through disciplined execution and customer-first workflows.
-        </p>
-      </div>
 
-      <div className="mt-10 space-y-5">
-        {studies.map((study) => (
-          <article key={study.title} className="card p-6 md:p-8">
-            <h2 className="font-display text-2xl font-semibold text-[var(--text-strong)]">
-              {study.title}
-            </h2>
-            <p className="mt-4 text-sm font-semibold uppercase tracking-[0.11em] text-[var(--text-soft)]">
-              Challenge
-            </p>
-            <p className="mt-1 leading-7 text-[var(--text-soft)]">{study.challenge}</p>
-            <p className="mt-4 text-sm font-semibold uppercase tracking-[0.11em] text-[var(--text-soft)]">
-              Solution
-            </p>
-            <p className="mt-1 leading-7 text-[var(--text-soft)]">{study.solution}</p>
-            <p className="mt-4 text-sm font-semibold uppercase tracking-[0.11em] text-[var(--text-soft)]">
-              Result
-            </p>
-            <p className="mt-1 text-lg font-semibold text-[var(--text-strong)]">{study.result}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+      <PageHero
+        badge="Case Studies"
+        title="Outcome-driven BPO stories from real operating playbooks"
+        description="These examples reflect the measurable impact BPOlytix is designed to deliver through disciplined execution and customer-first workflows."
+        primaryCta={{ label: "Talk to BPOlytix", href: "/contact" }}
+      />
+
+      <section className="section pt-0">
+        <div className="container-premium mt-2 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {caseStudies.map((study) => (
+            <article key={study.slug} className="card overflow-hidden p-0">
+              <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${study.gradient}`}>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.34),transparent_34%),linear-gradient(145deg,transparent,rgba(15,23,42,0.24))]" />
+                <div className="absolute inset-x-6 top-6 flex items-center justify-between gap-4">
+                  <span className="rounded-full border border-white/20 bg-white/12 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white">
+                    {study.industry}
+                  </span>
+                  <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/80">
+                    <CalendarDays className="h-3.5 w-3.5" />
+                    {new Date(study.publishedAt).toLocaleDateString("en-US", {
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </span>
+                </div>
+                <div className="absolute inset-x-6 bottom-6 text-white">
+                  <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/70">
+                    {study.statLabel}
+                  </p>
+                  <p className="mt-2 font-display text-3xl font-semibold tracking-tight">
+                    {study.statValue}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 md:p-7">
+                <span className={`inline-flex rounded-full px-3 py-1 text-[11px] font-semibold ${study.accent}`}>
+                  {study.industry}
+                </span>
+                <h2 className="mt-4 font-display text-2xl font-semibold text-[var(--text-strong)]">
+                  {study.title}
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">{study.summary}</p>
+
+                <div className="mt-5 space-y-2 border-t border-[var(--line)] pt-4">
+                  {study.outcomes.slice(0, 3).map((outcome) => (
+                    <div key={outcome} className="flex items-start gap-2 text-sm text-indigo-600">
+                      <TrendingUp className="mt-0.5 h-4 w-4 flex-shrink-0" />
+                      <span>{outcome}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href={`/case-studies/${study.slug}`}
+                  className="mt-6 inline-flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--text-strong)] transition hover:border-[var(--brand)]"
+                >
+                  View Full Case Study
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <CtaStrip
+        title="Want similar business outcomes?"
+        body="We can design a scoped pilot with clear KPIs and governance checkpoints tailored to your operation."
+        cta={{ label: "Book Discovery", href: "/contact" }}
+      />
+    </>
   );
 }

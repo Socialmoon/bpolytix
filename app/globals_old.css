@@ -1,0 +1,303 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f8f9fa;
+  --text-strong: #1a1a2e;
+  --text-soft: #6b7280;
+  --brand: #6366f1;
+  --brand-deep: #4f46e5;
+  --line: #e5e7eb;
+  --accent-1: #ec4899;
+  --accent-2: #f59e0b;
+  --accent-3: #10b981;
+  --accent-4: #3b82f6;
+  --accent: #3b82f6;
+  --mobile-nav-overlay: rgba(2, 6, 23, 0.58);
+  --mobile-nav-surface: rgba(2, 6, 23, 0.94);
+  
+  /* Shadcn UI Variables */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.6%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.6%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.6%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 217.2 91.2% 59.8%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217.2 91.2% 59.8%;
+  --secondary-foreground: 0 0% 100%;
+  --radius: 0.5rem;
+}
+
+html.dark {
+  --bg: #0a0e27;
+  --surface: #0f1829;
+  --surface-soft: #151f3f;
+  --text-strong: #f0f4f8;
+  --text-soft: #cbd5e1;
+  --brand: #7c3aed;
+  --brand-deep: #6d28d9;
+  --line: #1e293b;
+  --accent: #06b6d4;
+  --mobile-nav-overlay: rgba(0, 0, 0, 0.55);
+  --mobile-nav-surface: rgba(10, 14, 39, 0.98);
+  
+  /* Shadcn UI Dark Variables */
+  --background: 217.2 32.6% 17.5%;
+  --foreground: 0 0% 98%;
+  --card: 217.2 32.6% 17.5%;
+  --card-foreground: 0 0% 98%;
+  --popover: 217.2 32.6% 17.5%;
+  --popover-foreground: 0 0% 98%;
+  --muted: 217.2 14.3% 34.1%;
+  --muted-foreground: 215.4 16.3% 56.9%;
+  --accent: 198.6 88.7% 48.4%;
+  --accent-foreground: 217.2 32.6% 17.5%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --primary: 268.3 81% 66%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 198.6 88.7% 48.4%;
+  --secondary-foreground: 217.2 32.6% 17.5%;
+  --radius: 0.5rem;
+}
+
+[data-theme="dark"] {
+  --bg: #020617;
+  --surface: #0f172a;
+  --surface-soft: #172036;
+  --text-strong: #e2e8f0;
+  --text-soft: #94a3b8;
+  --brand: #60a5fa;
+  --brand-deep: #3b82f6;
+  --line: #1e293b;
+  --accent: #93c5fd;
+  --mobile-nav-overlay: rgba(0, 0, 0, 0.45);
+  --mobile-nav-surface: rgba(2, 6, 23, 0.96);
+}
+
+body {
+  background:
+    radial-gradient(circle at 4% -20%, rgba(124, 58, 237, 0.25), transparent 42%),
+    radial-gradient(circle at 92% -15%, rgba(6, 182, 212, 0.2), transparent 45%),
+    var(--bg);
+  color: var(--text-strong);
+  font-family: var(--font-plus-jakarta), "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+html.dark body {
+  background:
+    radial-gradient(circle at 4% -20%, rgba(124, 58, 237, 0.15), transparent 42%),
+    radial-gradient(circle at 92% -15%, rgba(6, 182, 212, 0.12), transparent 45%),
+    var(--bg);
+}
+
+* {
+  transition: color 0.3s ease;
+}
+
+main,
+footer {
+  transition: filter 0.25s ease;
+}
+
+body.mobile-nav-open main,
+body.mobile-nav-open footer {
+  filter: blur(10px);
+}
+
+.mobile-nav-overlay {
+  background: var(--mobile-nav-overlay);
+}
+
+.mobile-nav-sheet {
+  background: var(--mobile-nav-surface);
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-sora), "Trebuchet MS", sans-serif;
+}
+
+.section {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-left: 3rem;
+  }
+}
+
+.container-premium {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-premium {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-premium {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 35px -24px rgba(15, 23, 42, 0.55);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease;
+}
+
+html.dark .card {
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 10px 35px -24px rgba(6, 182, 212, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 22px 45px -28px rgba(15, 23, 42, 0.45);
+}
+
+html.dark .card:hover {
+  border-color: rgba(6, 182, 212, 0.6);
+  box-shadow: 0 22px 45px -28px rgba(6, 182, 212, 0.2);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: rgba(242, 246, 255, 0.78);
+  color: rgba(71, 85, 105, 0.85);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.link-hover {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.link-hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  background: var(--brand);
+}
+
+.link-hover:hover {
+  color: var(--text-strong);
+}
+
+.link-hover:hover::after {
+  transform: scaleX(1);
+}
+
+.hero-reveal {
+  animation: riseIn 0.7s ease-out both;
+}
+
+.stagger > * {
+  animation: riseIn 0.7s ease-out both;
+}
+
+.stagger > *:nth-child(2) {
+  animation-delay: 0.07s;
+}
+
+.stagger > *:nth-child(3) {
+  animation-delay: 0.14s;
+}
+
+.stagger > *:nth-child(4) {
+  animation-delay: 0.21s;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+}

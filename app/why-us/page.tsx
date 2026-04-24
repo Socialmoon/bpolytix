@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
+import { PageHero } from "@/components/premium/page-hero";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Why Choose BPOlytix for Domestic BPO",
+  title: "Why Choose BPOlytix as Your BPO Partner in India",
   description:
-    "See why businesses choose BPOlytix for accountable delivery, transparent reporting, and quality-driven customer engagement workflows.",
+    "See why businesses choose BPOlytix as their BPO partner for accountable delivery, transparent reporting, and quality-driven customer engagement workflows.",
   path: "/why-us",
-  keywords: ["why choose BPO", "domestic contact center", "BPO partner India"],
+  keywords: ["why choose BPO", "domestic contact center", "BPO partner India", "bpo company"],
 });
 
 const differentiators = [
@@ -89,7 +90,7 @@ const whyUsFaqSchema = faqJsonLd(whyUsFaqs);
 
 export default function WhyUsPage() {
   return (
-    <section className="section">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(whyUsBreadcrumb) }}
@@ -98,18 +99,16 @@ export default function WhyUsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(whyUsFaqSchema) }}
       />
-      <div className="max-w-3xl hero-reveal">
-        <p className="badge">Why BPOlytix</p>
-        <h1 className="mt-4 font-display text-4xl tracking-tight text-[var(--text-strong)] md:text-5xl">
-          Built for businesses that need results, not just activity
-        </h1>
-        <p className="mt-5 text-lg leading-8 text-[var(--text-soft)]">
-          Top BPO leaders combine talent, technology, and accountability. BPOlytix follows the same
-          principle with a compact, execution-first model tailored to real business growth.
-        </p>
-      </div>
+      <PageHero
+        badge="Why Us"
+        title="Built for businesses that need results, not just activity"
+        description="Top BPO leaders combine talent, technology, and accountability. BPOlytix follows the same principle with a compact, execution-first model tailored to real business growth."
+        primaryCta={{ label: "Contact Us", href: "/contact" }}
+        secondaryCta={{ label: "View Team", href: "/team" }}
+      />
 
-      <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <section className="section pt-0">
+      <div className="container-premium grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {differentiators.map((item) => (
           <article key={item.title} className="card p-6">
             <h2 className="font-display text-2xl font-semibold text-[var(--text-strong)]">
@@ -119,8 +118,10 @@ export default function WhyUsPage() {
           </article>
         ))}
       </div>
+      </section>
 
-      <div className="mt-10 card p-6 md:p-8">
+      <section className="section pt-0">
+      <div className="container-premium card p-6 md:p-8">
         <h2 className="font-display text-3xl tracking-tight text-[var(--text-strong)]">
           Operational Edge
         </h2>
@@ -131,8 +132,10 @@ export default function WhyUsPage() {
           <p className="rounded-xl bg-[var(--surface-soft)] p-4">Quality coaching and incentive-led culture</p>
         </div>
       </div>
+      </section>
 
-      <div className="mt-10 card p-6 md:p-8">
+      <section className="section pt-0">
+      <div className="container-premium card p-6 md:p-8">
         <h2 className="font-display text-3xl tracking-tight text-[var(--text-strong)]">
           Trust Framework
         </h2>
@@ -149,8 +152,10 @@ export default function WhyUsPage() {
           ))}
         </div>
       </div>
+      </section>
 
-      <div className="mt-10 card p-6 md:p-8">
+      <section className="section pt-0">
+      <div className="container-premium card p-6 md:p-8">
         <h2 className="font-display text-3xl tracking-tight text-[var(--text-strong)]">
           How We Engage
         </h2>
@@ -162,8 +167,10 @@ export default function WhyUsPage() {
           ))}
         </div>
       </div>
+      </section>
 
-      <div className="mt-10 card p-6 md:p-8">
+      <section className="section pt-0">
+      <div className="container-premium card p-6 md:p-8">
         <p className="badge">Decision FAQs</p>
         <h2 className="mt-3 font-display text-3xl tracking-tight text-[var(--text-strong)]">
           Straight answers for leadership teams evaluating a BPO partner
@@ -177,6 +184,7 @@ export default function WhyUsPage() {
           ))}
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
