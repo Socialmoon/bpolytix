@@ -1,137 +1,135 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Play, Sparkles, Star } from "lucide-react";
+import { ArrowRight, CheckCircle2, TrendingUp, Users, Zap } from "lucide-react";
+
+const stats = [
+  { value: "2–4 wks", label: "Average pilot launch" },
+  { value: "4 verticals", label: "Industry playbooks" },
+  { value: "6 service lines", label: "Delivery disciplines" },
+  { value: "Weekly", label: "Governance cadence" },
+];
+
+const pillars = [
+  {
+    icon: CheckCircle2,
+    title: "Quality-First Delivery",
+    body: "Every task runs through documented QA controls, calibration reviews, and coaching loops — so accuracy holds at scale.",
+    color: "bg-sky-600",
+  },
+  {
+    icon: Users,
+    title: "Dedicated Domain Teams",
+    body: "Agents trained specifically around your scripts, edge cases, and brand standards — not generic call-center pools.",
+    color: "bg-indigo-600",
+  },
+  {
+    icon: Zap,
+    title: "Rapid Pilot-to-Scale",
+    body: "Launch a controlled pilot in 2–4 weeks, validate quality, then scale with confidence using proven workforce controls.",
+    color: "bg-emerald-600",
+  },
+  {
+    icon: TrendingUp,
+    title: "Outcome-Led Reporting",
+    body: "Weekly dashboards translate interaction data into decisions on staffing, quality, and conversion — not just activity counts.",
+    color: "bg-amber-600",
+  },
+];
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] items-start justify-center overflow-hidden pt-7 sm:pt-8">
+    <section className="relative overflow-hidden bg-slate-50">
+      {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="hero-aurora absolute inset-0 opacity-90" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,#f8fafc_0%,#eef6ff_46%,#f7fee7_100%)]" />
         <div className="hero-grid absolute inset-0 opacity-20" />
-        <div className="hero-noise absolute inset-0 opacity-[0.12]" />
-        <div className="hero-orb hero-orb-a" />
-        <div className="hero-orb hero-orb-b" />
-        <div className="hero-orb hero-orb-c" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.9),transparent_45%),linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.2))]" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
       </div>
 
-      <div className="container mx-auto z-10 px-4 sm:px-6 lg:px-8">
-        <div className="grid items-start gap-14 py-9 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:py-14">
-          <div className="hero-reveal max-w-4xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/72 px-4 py-2 shadow-[0_12px_30px_rgba(15,23,42,0.08)] backdrop-blur-md">
-              <Sparkles className="h-4 w-4 text-indigo-600" />
-              <span className="text-sm font-semibold text-indigo-700">
-                Welcome to BPolyTix
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero headline */}
+        <div className="hero-reveal mx-auto max-w-5xl pt-20 pb-14 text-center sm:pt-28 sm:pb-20">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/90 px-4 py-2 text-sm font-semibold text-sky-800 shadow-sm backdrop-blur-md">
+            <span className="h-2 w-2 rounded-full bg-sky-500 animate-pulse" />
+            India's Execution-First BPO Partner
+          </div>
+
+          <h1 className="mt-7 text-5xl font-bold tracking-tight text-gray-950 sm:text-6xl lg:text-7xl lg:leading-[0.95]">
+            India&apos;s BPO company for{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent">
+                operations that deliver
               </span>
-            </div>
+              <span className="absolute inset-x-0 bottom-1 h-3 rounded-full bg-sky-100/80 -z-10" />
+            </span>
+          </h1>
 
-            <div className="mt-7 space-y-6">
-              <h1 className="max-w-5xl text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl lg:leading-[0.96]">
-                <span className="block">Design sharper operations.</span>
-                <span className="mt-2 block bg-[linear-gradient(135deg,#1d4ed8_0%,#7c3aed_45%,#ec4899_100%)] bg-clip-text text-transparent">
-                  Scale with elegance.
-                </span>
-              </h1>
-              <p className="max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
-                We shape customer operations, technology delivery, and growth systems into a business experience that feels faster, smarter, and unmistakably premium.
-              </p>
-            </div>
+          <p className="mx-auto mt-7 max-w-3xl text-xl leading-9 text-slate-600">
+            BPOlytix is a BPO company in India that builds and runs voice, chat, lead generation,
+            and back-office BPO services for growth-stage businesses — with structured quality
+            governance, transparent reporting, and a pilot-first model that de-risks every engagement.
+          </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#1e1b4b_0%,#4338ca_45%,#0ea5e9_100%)] px-8 py-4 font-semibold text-white shadow-[0_22px_45px_rgba(67,56,202,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_55px_rgba(67,56,202,0.34)]"
-              >
-                Get Started Today
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-              <Link
-                href="/case-studies"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white/75 px-8 py-4 font-semibold text-slate-700 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white"
-              >
-                View Our Work
-                <Play className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              {["Growth architecture", "Customer operations", "Premium execution"].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-white/70 bg-white/65 px-4 py-2 text-sm font-medium text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.05)] backdrop-blur-md"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-8 py-4 font-semibold text-white shadow-[0_18px_40px_rgba(15,23,42,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-sky-800"
+            >
+              Book a Free Consultation
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link
+              href="/case-studies"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-8 py-4 font-semibold text-slate-700 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-sky-300 hover:bg-white"
+            >
+              View Case Studies
+            </Link>
           </div>
 
-          <div className="relative">
-            <div className="hero-float rounded-[2rem] border border-white/65 bg-[linear-gradient(160deg,rgba(255,255,255,0.92),rgba(238,242,255,0.82))] p-6 shadow-[0_30px_80px_rgba(15,23,42,0.12)] backdrop-blur-xl">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-500">
-                    Operating Rhythm
-                  </p>
-                  <h2 className="mt-3 font-display text-3xl leading-tight text-slate-900">
-                    Transform complexity into visible momentum.
-                  </h2>
-                </div>
-                <div className="rounded-2xl bg-[linear-gradient(135deg,rgba(99,102,241,0.14),rgba(236,72,153,0.14))] p-3 text-indigo-700">
-                  <Star className="h-5 w-5" />
-                </div>
-              </div>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {[
-                  {
-                    title: "Consulting",
-                    body: "Sharper decisions, cleaner operating models, better market moves.",
-                  },
-                  {
-                    title: "Technology",
-                    body: "Modern systems that reduce friction and create headroom for growth.",
-                  },
-                  {
-                    title: "BPO",
-                    body: "High-quality execution teams with governance you can actually trust.",
-                  },
-                  {
-                    title: "Analytics",
-                    body: "Decision-ready insights framed for action, not dashboard theater.",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-[1.5rem] border border-white/70 bg-white/80 p-4 shadow-[0_10px_22px_rgba(15,23,42,0.05)]"
-                  >
-                    <p className="text-sm font-semibold uppercase tracking-[0.08em] text-slate-900">
-                      {item.title}
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">{item.body}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 rounded-[1.5rem] border border-indigo-100 bg-[linear-gradient(135deg,rgba(224,231,255,0.75),rgba(255,255,255,0.95))] p-5">
-                <div className="grid gap-4 sm:grid-cols-3">
-                  {[
-                    { number: "500+", label: "Happy Clients", color: "from-blue-500 to-cyan-500" },
-                    { number: "15+", label: "Years Experience", color: "from-purple-500 to-pink-500" },
-                    { number: "98%", label: "Success Rate", color: "from-emerald-500 to-teal-500" },
-                  ].map((stat) => (
-                    <div key={stat.label}>
-                      <div className={`text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
-                        {stat.number}
-                      </div>
-                      <div className="mt-1 text-sm font-medium text-slate-600">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+          {/* Trust badges */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {["Startups", "SMBs", "Enterprises", "EdTech", "Healthcare", "D2C"].map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-slate-200 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-slate-600 shadow-sm backdrop-blur-md"
+              >
+                {item}
+              </span>
+            ))}
           </div>
+        </div>
+
+        {/* Stats band */}
+        <div className="grid grid-cols-2 gap-4 pb-10 sm:grid-cols-4 sm:pb-14">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-white/80 bg-white/80 p-5 text-center shadow-sm backdrop-blur"
+            >
+              <p className="text-2xl font-bold text-slate-950">{stat.value}</p>
+              <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Pillars */}
+        <div className="grid gap-5 pb-20 sm:grid-cols-2 lg:grid-cols-4 sm:pb-28">
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
+              <div
+                key={pillar.title}
+                className="rounded-2xl border border-gray-200 bg-white p-6 shadow-[0_14px_34px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_22px_48px_rgba(15,23,42,0.09)]"
+              >
+                <div className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl ${pillar.color} text-white`}>
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-gray-950">{pillar.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-gray-600">{pillar.body}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

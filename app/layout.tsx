@@ -4,6 +4,9 @@ import {
   organizationJsonLd,
   siteConfig,
   webSiteJsonLd,
+  speakableJsonLd,
+  definedTermJsonLd,
+  placeJsonLd,
 } from "@/lib/seo";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
@@ -14,6 +17,9 @@ export const metadata: Metadata = {
   title: {
     default: siteConfig.defaultTitle,
     template: siteConfig.titleTemplate,
+  },
+  verification: {
+    google: undefined, // add your Google Search Console verification token here
   },
   icons: {
     icon: "/logo-nav.jpeg",
@@ -27,6 +33,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": siteConfig.region,
     "geo.placename": `${siteConfig.city}, ${siteConfig.state}`,
+    "geo.position": "26.8467;80.9462",
+    "geo.country": "IN",
     ICBM: "26.8467, 80.9462",
   },
   alternates: {
@@ -75,6 +83,9 @@ export const viewport = {
 const organizationSchema = organizationJsonLd();
 const localBusinessSchema = localBusinessJsonLd();
 const websiteSchema = webSiteJsonLd();
+const speakableSchema = speakableJsonLd(["h1", "h2", ".hero-headline", ".site-description"]);
+const definedTermSchema = definedTermJsonLd();
+const placeSchema = placeJsonLd();
 
 export default function RootLayout({
   children,
@@ -83,36 +94,26 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className="h-full antialiased dark"
       suppressHydrationWarning
     >
-      <head>
-        <script
+      <body className="min-h-screen flex flex-col bg-background text-foreground">
+        {/* JSON-LD structured data — rendered server-side into the HTML stream */}
+        <div
+          id="ld-json"
+          aria-hidden="true"
           dangerouslySetInnerHTML={{
-            __html: `(() => {
-  const storageKey = "theme-preference";
-  const stored = localStorage.getItem(storageKey) || "dark";
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const resolved = stored === "system" ? (prefersDark ? "dark" : "light") : stored;
-  if (resolved === "dark") document.documentElement.classList.add("dark");
-})();`,
+            __html: [
+              `<script type="application/ld+json">${JSON.stringify(organizationSchema)}</script>`,
+              `<script type="application/ld+json">${JSON.stringify(localBusinessSchema)}</script>`,
+              `<script type="application/ld+json">${JSON.stringify(websiteSchema)}</script>`,
+              `<script type="application/ld+json">${JSON.stringify(speakableSchema)}</script>`,
+              `<script type="application/ld+json">${JSON.stringify(definedTermSchema)}</script>`,
+              `<script type="application/ld+json">${JSON.stringify(placeSchema)}</script>`,
+            ].join(""),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-      </head>
-      <body className="min-h-screen flex flex-col bg-background text-foreground">
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />

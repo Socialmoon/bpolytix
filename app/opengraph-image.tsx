@@ -49,12 +49,12 @@ export default function OpenGraphImage() {
           BPOlytix | Powered by SocialMoon
         </div>
         <div style={headlineStyle}>
-          BPO Services for Smart Calls and Smarter Results.
+          India&apos;s BPO Company for Smart Operations &amp; Smarter Results.
         </div>
         <div style={tagsStyle}>
-          <span>Domestic BPO</span>
+          <span>BPO Services</span>
+          <span>BPO Company India</span>
           <span>Lucknow</span>
-          <span>India</span>
         </div>
       </div>
     ),

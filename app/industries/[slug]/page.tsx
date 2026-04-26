@@ -28,10 +28,10 @@ export async function generateMetadata({
   }
 
   return buildMetadata({
-    title: `${industry.name} BPO Services`,
-    description: industry.summary,
+    title: `${industry.name} BPO Services India | BPOlytix`,
+    description: `${industry.summary} BPOlytix provides BPO services for the ${industry.name} industry across India.`,
     path: `/industries/${industry.slug}`,
-    keywords: [industry.name, ...industry.priorities],
+    keywords: ["bpo", `${industry.name.toLowerCase()} bpo`, `${industry.name.toLowerCase()} bpo services india`, ...industry.priorities],
   });
 }
 

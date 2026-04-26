@@ -7,15 +7,17 @@ import { CtaStrip } from "@/components/premium/cta-strip";
 import { PageHero } from "@/components/premium/page-hero";
 
 export const metadata: Metadata = buildMetadata({
-  title: "BPO Blog: Customer Support, Outsourcing, and Growth Insights",
+  title: "BPO Blog — BPO Insights, Customer Support & Outsourcing Strategy | BPOlytix",
   description:
-    "Read practical BPO blog articles from BPOlytix on customer support, lead generation, outsourcing strategy, and call center performance improvement.",
+    "Read BPO blog articles from BPOlytix on BPO strategy, customer support outsourcing, lead generation, and call center performance improvement in India.",
   path: "/blog",
   keywords: [
     "bpo blog",
+    "bpo insights",
+    "bpo strategy india",
     "customer support outsourcing blog",
     "call center best practices",
-    "lead generation insights",
+    "lead generation bpo insights",
   ],
 });
 

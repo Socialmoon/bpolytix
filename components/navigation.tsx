@@ -30,7 +30,7 @@ export function Navigation() {
 
   return (
     <nav
-      className="sticky top-0 z-50 border-b border-[var(--line)] bg-white/80 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl"
+      className="sticky top-0 z-50 border-b border-[var(--line)] bg-white/80 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl relative"
       onMouseLeave={() => setOpenDropdown(null)}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -114,137 +114,85 @@ export function Navigation() {
 
       {currentGroup ? (
         <div
-          className="fixed inset-x-0 top-16 hidden h-[50vh] border-t border-[rgba(99,102,241,0.14)] bg-[linear-gradient(180deg,rgba(248,250,252,0.96),rgba(255,255,255,0.98))] shadow-[0_34px_90px_rgba(15,23,42,0.14)] backdrop-blur-2xl xl:block"
+          className="absolute left-0 right-0 top-full hidden xl:block"
           onMouseEnter={() => setOpenDropdown(currentGroup.label)}
           onMouseLeave={() => setOpenDropdown(null)}
         >
-          <div className="relative h-full overflow-hidden">
-            <div className="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-cyan-200/40 blur-3xl" />
-            <div className="pointer-events-none absolute right-0 top-12 h-72 w-72 rounded-full bg-indigo-200/35 blur-3xl" />
-            <div className="pointer-events-none absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-amber-200/30 blur-3xl" />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.72),transparent_42%,rgba(224,231,255,0.42))]" />
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-300/80 to-transparent" />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-6">
+            <div className="relative overflow-hidden rounded-2xl border border-indigo-100/60 bg-white/95 shadow-[0_24px_64px_rgba(15,23,42,0.12),0_0_0_1px_rgba(99,102,241,0.06)] backdrop-blur-xl">
+              {/* subtle top accent line */}
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent" />
+              {/* ambient glow */}
+              <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-indigo-200/30 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-8 left-1/4 h-40 w-40 rounded-full bg-cyan-200/25 blur-3xl" />
 
-            <div className="container-premium relative z-10 grid h-full grid-cols-12 gap-6 py-7">
-              <aside className="relative col-span-4 overflow-hidden rounded-[2rem] border border-white/65 bg-[linear-gradient(155deg,#111827_0%,#312e81_48%,#0f766e_100%)] p-8 text-white shadow-[0_28px_60px_rgba(49,46,129,0.35)]">
-                <div className="pointer-events-none absolute -left-12 top-8 h-32 w-32 rounded-full bg-white/10 blur-3xl" />
-                <div className="relative">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    Navigate
+              <div className="relative grid grid-cols-12 gap-0">
+                {/* Left panel */}
+                <div className="col-span-3 border-r border-indigo-50 bg-[linear-gradient(160deg,#1e1b4b_0%,#312e81_55%,#0e7490_100%)] p-6 text-white">
+                  <div className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/70">
+                    <Sparkles className="h-3 w-3" />
+                    {currentGroup.label}
                   </div>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-cyan-100/75">
-                    {currentGroup.label}
-                  </p>
-                  <h3 className="mt-3 font-display text-3xl leading-tight text-white">
-                    {currentGroup.label}
-                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-white/70">{currentGroup.description}</p>
                   <Link
                     href={currentGroup.href}
-                    className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-indigo-700 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                    className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/20 transition-all duration-200 hover:bg-white/25"
                   >
-                    Explore {currentGroup.label}
-                    <ArrowUpRight className="h-4 w-4" />
+                    View all
+                    <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
-                  <div className="mt-7 grid grid-cols-2 gap-3">
-                    <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55">
-                        Featured
-                      </p>
-                      <p className="mt-2 text-2xl font-semibold text-white">
-                        {featuredItems.length}
-                      </p>
-                    </div>
-                    <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55">
-                        Quick Links
-                      </p>
-                      <p className="mt-2 text-2xl font-semibold text-white">
-                        {currentGroup.links.length}
-                      </p>
-                    </div>
+                </div>
+
+                {/* Featured items */}
+                <div className="col-span-5 p-6">
+                  <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-indigo-400">Featured</p>
+                  <div className="space-y-1">
+                    {featuredItems.map((item) => (
+                      <Link
+                        key={`${currentGroup.label}-featured-${item.href}`}
+                        href={item.href}
+                        className="group flex items-center justify-between rounded-xl px-3 py-2.5 transition-all duration-200 hover:bg-indigo-50"
+                      >
+                        <div>
+                          <p className="text-sm font-semibold text-[var(--text-strong)] transition-colors group-hover:text-indigo-700">
+                            {item.label}
+                          </p>
+                          {item.description && (
+                            <p className="mt-0.5 text-xs text-[var(--text-soft)] line-clamp-1">{item.description}</p>
+                          )}
+                        </div>
+                        <ArrowUpRight className="h-3.5 w-3.5 flex-shrink-0 text-indigo-300 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                      </Link>
+                    ))}
                   </div>
                 </div>
-              </aside>
 
-              <section className="col-span-8 h-full">
-                <div className="grid h-full gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-                  <div className="rounded-[2rem] border border-white/80 bg-white/80 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur">
-                    <div className="mb-5 flex items-center justify-between">
-                      <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-500">
-                          Featured Paths
-                        </p>
-                        <h4 className="mt-2 font-display text-2xl text-[var(--text-strong)]">
-                          {currentGroup.label}
-                        </h4>
-                      </div>
-                      <div className="hidden rounded-full bg-[linear-gradient(135deg,rgba(99,102,241,0.14),rgba(14,165,233,0.14))] px-3 py-1 text-xs font-semibold text-indigo-700 lg:block">
-                        {currentGroup.label}
-                      </div>
-                    </div>
-
-                    <div className="grid gap-4 md:grid-cols-2">
-                      {featuredItems.map((item) => (
-                        <Link
-                          key={`${currentGroup.label}-featured-${item.href}`}
-                          href={item.href}
-                          className="group rounded-[1.5rem] border border-[rgba(99,102,241,0.12)] bg-[linear-gradient(160deg,rgba(255,255,255,0.96),rgba(238,242,255,0.82))] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-[0_18px_35px_rgba(79,70,229,0.14)]"
-                        >
-                          <div className="flex items-start justify-between gap-4">
-                            <div>
-                              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-600">
-                                Featured
-                              </p>
-                              <p className="mt-2 font-display text-xl text-[var(--text-strong)]">
-                                {item.label}
-                              </p>
-                            </div>
-                            <span className="rounded-full border border-indigo-100 bg-white/90 p-2 text-indigo-600 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-                              <ArrowUpRight className="h-4 w-4" />
-                            </span>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="rounded-[2rem] border border-[rgba(99,102,241,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(248,250,252,0.92))] p-6 shadow-[0_18px_45px_rgba(15,23,42,0.06)] backdrop-blur">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-500">
-                      Quick Routes
-                    </p>
-                    <div className="mt-5 space-y-3">
-                      {currentGroup.links.map((item, index) => (
-                        <Link
-                          key={`${currentGroup.label}-${item.href}`}
-                          href={item.href}
-                          className="group flex items-start gap-4 rounded-[1.35rem] border border-transparent bg-white/90 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white hover:shadow-md"
-                        >
-                          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(99,102,241,0.12),rgba(14,165,233,0.14))] text-sm font-semibold text-indigo-700">
-                            {index + 1}
-                          </div>
-                          <div className="min-w-0">
-                            <p className="font-semibold text-[var(--text-strong)] transition-colors duration-300 group-hover:text-indigo-700">
-                              {item.label}
-                            </p>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {navSecondaryLinks.map((item) => (
-                        <Link
-                          key={`side-${item.href}`}
-                          href={item.href}
-                          className="rounded-full border border-indigo-100 bg-white/90 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-indigo-700 transition hover:border-indigo-200 hover:bg-indigo-50"
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
+                {/* Quick links */}
+                <div className="col-span-4 border-l border-indigo-50 bg-slate-50/60 p-6">
+                  <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-indigo-400">Quick Links</p>
+                  <div className="space-y-1">
+                    {currentGroup.links.map((item) => (
+                      <Link
+                        key={`${currentGroup.label}-${item.href}`}
+                        href={item.href}
+                        className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 hover:bg-white hover:shadow-sm"
+                      >
+                        <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 transition-colors group-hover:bg-indigo-600 group-hover:text-white">
+                          <ArrowUpRight className="h-3.5 w-3.5" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-[var(--text-strong)] transition-colors group-hover:text-indigo-700">
+                            {item.label}
+                          </p>
+                          {item.description && (
+                            <p className="text-xs text-[var(--text-soft)]">{item.description}</p>
+                          )}
+                        </div>
+                      </Link>
+                    ))}
                   </div>
                 </div>
-              </section>
+              </div>
             </div>
           </div>
         </div>

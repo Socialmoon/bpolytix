@@ -32,7 +32,7 @@ export async function generateMetadata({
       title: post.seoTitle,
       description: post.seoDescription,
       path: `/blog/${post.slug}`,
-      keywords: [...post.tags, post.category, "BPO insights", "operations strategy"],
+      keywords: [...post.tags, post.category, "bpo", "bpo insights", "bpo india", "BPO operations strategy"],
     }),
     openGraph: {
       type: "article",
