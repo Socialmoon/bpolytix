@@ -7,6 +7,7 @@ type PageHeroProps = {
   description: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  stats?: Array<{ value: string; label: string }>;
 };
 
 export function PageHero({
@@ -15,6 +16,7 @@ export function PageHero({
   description,
   primaryCta,
   secondaryCta,
+  stats,
 }: PageHeroProps) {
   return (
     <section className="section pt-24 md:pt-28">
@@ -29,7 +31,7 @@ export function PageHero({
           <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,255,255,0.22),transparent_30%),radial-gradient(circle_at_88%_22%,rgba(165,243,252,0.20),transparent_28%),radial-gradient(circle_at_52%_100%,rgba(244,114,182,0.22),transparent_34%)]" />
 
-          <div className="relative z-10 grid items-end gap-10 lg:grid-cols-[minmax(0,1.1fr)_320px]">
+          <div className="relative z-10 grid items-end gap-10 lg:grid-cols-[minmax(0,1.1fr)_300px]">
             <div className="max-w-4xl hero-reveal">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur-md">
                 <Sparkles className="h-3.5 w-3.5" />
@@ -74,32 +76,50 @@ export function PageHero({
               </div>
             </div>
 
+            {/* Side stats panel */}
             <div className="grid gap-4 lg:justify-self-end">
-              <div className="hero-float rounded-[1.75rem] border border-white/20 bg-white/12 p-5 text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] backdrop-blur-xl">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-100/70">
-                  Delivery Lens
-                </p>
-                <p className="mt-3 font-display text-2xl">
-                  Designed for clarity from first click to execution.
-                </p>
-                <div className="mt-4 h-px bg-gradient-to-r from-white/40 to-transparent" />
-                <p className="mt-4 text-sm leading-6 text-white/78">
-                  Strong visuals, focused calls to action, and quieter supporting detail so each page opens with confidence.
-                </p>
-              </div>
+              {stats ? (
+                <div className="hero-float rounded-[1.75rem] border border-white/20 bg-white/12 p-5 text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] backdrop-blur-xl">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-100/70">
+                    At a Glance
+                  </p>
+                  <div className="mt-4 space-y-3">
+                    {stats.map((s) => (
+                      <div key={s.label} className="flex items-center justify-between gap-4">
+                        <p className="text-sm text-white/70">{s.label}</p>
+                        <p className="text-sm font-bold text-white">{s.value}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="hero-float rounded-[1.75rem] border border-white/20 bg-white/12 p-5 text-white shadow-[0_18px_45px_rgba(15,23,42,0.18)] backdrop-blur-xl">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-100/70">
+                    Delivery Promise
+                  </p>
+                  <p className="mt-3 font-display text-2xl">
+                    Clarity, quality, and accountability — from pilot to scale.
+                  </p>
+                  <div className="mt-4 h-px bg-gradient-to-r from-white/40 to-transparent" />
+                  <p className="mt-4 text-sm leading-6 text-white/75">
+                    Every engagement starts with a discovery phase, runs through a governed pilot,
+                    and scales only when quality is validated.
+                  </p>
+                </div>
+              )}
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-[1.5rem] border border-white/16 bg-black/12 p-4 text-white/92 backdrop-blur-md">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55">
-                    Visual Style
+                    Launch Time
                   </p>
-                  <p className="mt-2 text-lg font-semibold">Layered motion</p>
+                  <p className="mt-2 text-lg font-semibold">2–4 weeks</p>
                 </div>
                 <div className="rounded-[1.5rem] border border-white/16 bg-black/12 p-4 text-white/92 backdrop-blur-md">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55">
-                    Focus
+                    Governance
                   </p>
-                  <p className="mt-2 text-lg font-semibold">High-intent CTA</p>
+                  <p className="mt-2 text-lg font-semibold">Weekly</p>
                 </div>
               </div>
             </div>

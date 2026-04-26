@@ -3,19 +3,25 @@ import type { Metadata } from "next";
 export const siteConfig = {
   name: "BPOlytix",
   legalName: "BPOlytix",
-  titleTemplate: "%s | BPOlytix",
-  defaultTitle: "BPO Company in Lucknow, India | BPOlytix",
+  titleTemplate: "%s | BPOlytix — BPO Company India",
+  defaultTitle: "BPO Company India | BPO Services & Call Center Outsourcing — BPOlytix",
   description:
-    "BPOlytix is a domestic BPO company delivering customer support, call center outsourcing, and lead generation services for businesses in Lucknow, Uttar Pradesh, and across India.",
+    "BPOlytix is India's execution-first BPO company. We deliver BPO services including customer support, call center outsourcing, lead generation, and back-office processing for businesses across India.",
   defaultKeywords: [
     "bpo",
     "bpo company",
     "bpo services",
+    "bpo company india",
+    "bpo services india",
+    "domestic bpo",
     "domestic bpo services",
     "call center outsourcing india",
     "customer support bpo",
     "lead generation bpo",
     "bpo company in lucknow",
+    "bpo outsourcing",
+    "business process outsourcing india",
+    "bpo solutions",
   ],
   url: "https://bpolytix.in",
   locale: "en_IN",
@@ -105,10 +111,18 @@ export function webSiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteConfig.name,
-    alternateName: siteConfig.legalName,
+    alternateName: ["BPO Company India", "BPO Services India", siteConfig.legalName],
     url: siteConfig.url,
     description: siteConfig.description,
     inLanguage: "en-IN",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 
@@ -121,10 +135,14 @@ export function organizationJsonLd() {
     logo: `${siteConfig.url}/logo-nav.jpeg`,
     description: siteConfig.description,
     knowsAbout: [
+      "BPO",
       "BPO services",
+      "BPO company India",
+      "Business process outsourcing",
       "Customer support outsourcing",
       "Lead generation outsourcing",
-      "Domestic call center operations",
+      "Domestic BPO",
+      "Call center outsourcing India",
     ],
     sameAs: [siteConfig.xProfile, siteConfig.instagramProfile],
     areaServed: {
@@ -142,11 +160,25 @@ export function localBusinessJsonLd() {
     url: siteConfig.url,
     image: `${siteConfig.url}/logo-nav.jpeg`,
     description: siteConfig.description,
+    telephone: "+91-85629-22873",
+    email: "contact@bpolytix.in",
+    priceRange: "$$",
     address: {
       "@type": "PostalAddress",
       addressLocality: siteConfig.city,
       addressRegion: siteConfig.state,
       addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 26.8467,
+      longitude: 80.9462,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "10:00",
+      closes: "18:00",
     },
     areaServed: [
       {
@@ -209,6 +241,59 @@ export function faqJsonLd(items: Array<{ question: string; answer: string }>) {
         text: item.answer,
       },
     })),
+  };
+}
+
+// AEO: Speakable schema — tells Google/AI assistants which parts of the page to read aloud
+export function speakableJsonLd(cssSelectors: string[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: cssSelectors,
+    },
+    url: siteConfig.url,
+  };
+}
+
+// AEO: DefinedTerm schema — tells AI what "BPO" means in context of this site
+export function definedTermJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: "BPO",
+    alternateName: "Business Process Outsourcing",
+    description:
+      "BPO (Business Process Outsourcing) is the practice of contracting specific business operations and responsibilities to a third-party service provider. BPOlytix is a BPO company in India offering customer support, lead generation, back-office processing, and call center outsourcing services.",
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      name: "BPO Industry Glossary",
+      url: `${siteConfig.url}/resources`,
+    },
+    url: siteConfig.url,
+  };
+}
+
+// GEO: Place schema — reinforces geographic relevance for local/regional search
+export function placeJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    name: `BPOlytix — BPO Company in ${siteConfig.city}`,
+    description: `BPOlytix is a BPO company based in ${siteConfig.city}, ${siteConfig.state}, India, providing BPO services to businesses across India.`,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 26.8467,
+      longitude: 80.9462,
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: siteConfig.city,
+      addressRegion: siteConfig.state,
+      addressCountry: "IN",
+    },
+    url: siteConfig.url,
   };
 }
 
