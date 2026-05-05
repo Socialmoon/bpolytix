@@ -9,7 +9,21 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Apply for open BPO roles at BPOlytix in customer support, lead generation, quality analysis, and operations reporting. Based in Lucknow and Prayagraj.",
   path: "/careers",
-  keywords: ["BPO jobs Lucknow", "telecaller jobs", "customer support careers", "bpo careers india", "quality analyst bpo"],
+  keywords: [
+    "bpo jobs lucknow",
+    "bpo careers india",
+    "bpolytix careers",
+    "telecaller jobs lucknow",
+    "telecaller jobs india",
+    "customer support careers",
+    "customer support jobs lucknow",
+    "quality analyst bpo",
+    "bpo jobs uttar pradesh",
+    "call center jobs lucknow",
+    "mis executive bpo",
+    "inbound support jobs india",
+    "bpo hiring india",
+  ],
 });
 
 const openings = [

@@ -9,7 +9,18 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Understand how BPOlytix, India's BPO company, plans, launches, governs, and scales BPO delivery with quality controls, transparent reporting, and a pilot-first model.",
   path: "/process",
-  keywords: ["bpo process", "bpo delivery methodology", "bpo implementation india", "pilot bpo model"],
+  keywords: [
+    "bpo process",
+    "bpo delivery methodology",
+    "bpo implementation india",
+    "pilot bpo model",
+    "bpolytix process",
+    "bpo quality control india",
+    "bpo sop india",
+    "bpo governance model",
+    "bpo pilot launch india",
+    "how bpo works india",
+  ],
 });
 
 const processBreadcrumb = breadcrumbJsonLd([

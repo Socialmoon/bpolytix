@@ -11,7 +11,21 @@ export const metadata: Metadata = buildMetadata({
   description:
     "BPOlytix delivers industry-specific BPO services for Healthcare, EdTech, Ecommerce, and Financial Services. Vertical BPO playbooks built for real-world constraints across India.",
   path: "/industries",
-  keywords: ["bpo industries", "industry bpo services india", "healthcare bpo", "edtech bpo", "ecommerce bpo", "financial services bpo"],
+  keywords: [
+    "bpo industries",
+    "industry bpo services india",
+    "healthcare bpo",
+    "healthcare bpo india",
+    "edtech bpo",
+    "education bpo india",
+    "ecommerce bpo",
+    "d2c bpo india",
+    "financial services bpo",
+    "fintech bpo india",
+    "vertical bpo india",
+    "sector specific bpo",
+    "bpolytix industries",
+  ],
 });
 
 const industriesBreadcrumb = breadcrumbJsonLd([

@@ -11,7 +11,18 @@ export const metadata: Metadata = buildMetadata({
   description:
     "BPOlytix is an India-based BPO company helping businesses improve customer operations, conversion quality, and process reliability through structured BPO delivery and transparent governance.",
   path: "/about",
-  keywords: ["bpo company india", "about bpolytix", "bpo partner india", "domestic bpo company"],
+  keywords: [
+    "about bpolytix",
+    "bpolytix company",
+    "bpo company india",
+    "bpo partner india",
+    "domestic bpo company",
+    "bpo company lucknow",
+    "execution first bpo",
+    "bpo company uttar pradesh",
+    "bpo governance india",
+    "pilot bpo model india",
+  ],
 });
 
 const values = [

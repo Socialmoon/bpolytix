@@ -13,11 +13,15 @@ export const metadata: Metadata = buildMetadata({
   path: "/blog",
   keywords: [
     "bpo blog",
-    "bpo insights",
+    "bpolytix blog",
+    "bpo insights india",
     "bpo strategy india",
     "customer support outsourcing blog",
-    "call center best practices",
+    "call center best practices india",
     "lead generation bpo insights",
+    "bpo tips india",
+    "outsourcing strategy india",
+    "bpo articles india",
   ],
 });
 

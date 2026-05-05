@@ -7,15 +7,21 @@ import { CtaStrip } from "@/components/premium/cta-strip";
 import { PageHero } from "@/components/premium/page-hero";
 
 export const metadata: Metadata = buildMetadata({
-  title: "BPO Case Studies and Customer Support Outcome Stories",
+  title: "BPO Case Studies — Customer Support & Lead Generation Outcomes | BPOlytix",
   description:
-    "Review real BPO operating scenarios showing how BPOlytix improves conversion, support responsiveness, and process consistency.",
+    "Review real BPO operating scenarios showing how BPOlytix improves conversion, support responsiveness, and process consistency across Healthcare, EdTech, and Ecommerce.",
   path: "/case-studies",
   keywords: [
-    "BPO case studies",
-    "customer support outcomes",
-    "lead conversion case study",
-    "bpo success stories",
+    "bpo case studies",
+    "bpolytix case studies",
+    "customer support outcomes india",
+    "lead conversion case study india",
+    "bpo success stories india",
+    "healthcare bpo case study",
+    "edtech bpo case study",
+    "ecommerce bpo case study",
+    "bpo results india",
+    "bpo roi india",
   ],
 });
 

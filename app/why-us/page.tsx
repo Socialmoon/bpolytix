@@ -9,7 +9,19 @@ export const metadata: Metadata = buildMetadata({
   description:
     "See why businesses choose BPOlytix as their BPO company in India. Accountable BPO delivery, transparent reporting, quality-driven customer engagement, and a pilot-first model.",
   path: "/why-us",
-  keywords: ["why choose bpo company", "best bpo company india", "bpo partner india", "bpo company india"],
+  keywords: [
+    "why choose bpolytix",
+    "why choose bpo company",
+    "best bpo company india",
+    "top bpo company india",
+    "bpo partner india",
+    "bpo company india",
+    "accountable bpo india",
+    "reliable bpo company india",
+    "bpo quality governance",
+    "pilot first bpo",
+    "bpo company lucknow",
+  ],
 });
 
 const differentiators = [

@@ -13,7 +13,26 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Explore BPOlytix BPO services: customer support outsourcing, lead generation BPO, back-office processing, inside sales, quality analytics, and workforce management across India.",
   path: "/services",
-  keywords: ["bpo services", "bpo services india", "customer support bpo", "lead generation bpo", "back office bpo", "call center outsourcing", "bpo outsourcing india"],
+  keywords: [
+    "bpo services",
+    "bpo services india",
+    "bpolytix services",
+    "customer support bpo",
+    "customer support outsourcing india",
+    "lead generation bpo",
+    "lead generation outsourcing india",
+    "back office bpo",
+    "back office outsourcing india",
+    "call center outsourcing",
+    "call center outsourcing india",
+    "inside sales bpo",
+    "telecalling services india",
+    "bpo outsourcing india",
+    "workforce management bpo",
+    "quality analytics bpo",
+    "inbound call center india",
+    "outbound call center india",
+  ],
 });
 
 export default function ServicesPage() {

@@ -9,7 +9,18 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Contact BPOlytix, India's BPO company, to discuss your customer support, lead generation, or back-office BPO needs. We respond within 1 business day.",
   path: "/contact",
-  keywords: ["contact bpo company", "bpo consultation india", "bpo company contact", "hire bpo india"],
+  keywords: [
+    "contact bpolytix",
+    "contact bpo company",
+    "bpo consultation india",
+    "bpo company contact",
+    "hire bpo india",
+    "hire bpo company india",
+    "bpo inquiry india",
+    "bpo services quote india",
+    "bpo company lucknow contact",
+    "outsource bpo india",
+  ],
 });
 
 const contactPageSchema = {
