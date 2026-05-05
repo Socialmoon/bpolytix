@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   localBusinessJsonLd,
   organizationJsonLd,
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     template: siteConfig.titleTemplate,
   },
   verification: {
-    google: undefined, // add your Google Search Console verification token here
+    google: "G-JG5X55FF4D",
   },
   icons: {
     icon: "/logo-nav.jpeg",
@@ -114,6 +115,13 @@ export default function RootLayout({
             ].join(""),
           }}
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-JG5X55FF4D"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JG5X55FF4D');`}
+        </Script>
         <Navigation />
         <main className="flex-1">{children}</main>
         <Footer />

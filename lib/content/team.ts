@@ -33,20 +33,6 @@ export const teamMembers: TeamMember[] = [
     ],
   },
   {
-    name: "Vaibhav Kumar",
-    role: "Chief Technology Officer",
-    department: "Technology",
-    bio: "Vaibhav leads BPOlytix's technology vision and engineering direction. He architects the systems, integrations, and platforms that power reliable delivery — ensuring every tool we use is secure, scalable, and built to support operational excellence.",
-    photo: "/team/vaibhav.jpg",
-    gradient: "from-cyan-500 via-blue-500 to-indigo-600",
-    accent: "text-cyan-600",
-    socials: [
-      { platform: "linkedin", href: "https://linkedin.com" },
-      { platform: "x", href: "https://x.com" },
-      { platform: "email", href: "mailto:vaibhav@bpolytix.com" },
-    ],
-  },
-  {
     name: "Avinash",
     role: "Strategic Advisor",
     department: "Advisory",
@@ -58,6 +44,20 @@ export const teamMembers: TeamMember[] = [
       { platform: "linkedin", href: "https://linkedin.com" },
       { platform: "x", href: "https://x.com" },
       { platform: "email", href: "mailto:avinash@bpolytix.com" },
+    ],
+  },
+  {
+    name: "Vaibhav Kumar",
+    role: "Chief Technology Officer",
+    department: "Technology",
+    bio: "Vaibhav leads BPOlytix's technology vision and engineering direction. He architects the systems, integrations, and platforms that power reliable delivery — ensuring every tool we use is secure, scalable, and built to support operational excellence.",
+    photo: "/team/vaibhav.jpg",
+    gradient: "from-cyan-500 via-blue-500 to-indigo-600",
+    accent: "text-cyan-600",
+    socials: [
+      { platform: "linkedin", href: "https://linkedin.com" },
+      { platform: "x", href: "https://x.com" },
+      { platform: "email", href: "mailto:vaibhav@bpolytix.com" },
     ],
   },
   {
