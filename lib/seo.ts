@@ -8,6 +8,7 @@ export const siteConfig = {
   description:
     "BPOlytix is India's execution-first BPO company. We deliver BPO services including customer support, call center outsourcing, lead generation, and back-office processing for businesses across India.",
   defaultKeywords: [
+    "bpolytix",
     "bpo",
     "bpo company",
     "bpo services",
@@ -111,7 +112,7 @@ export function webSiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteConfig.name,
-    alternateName: ["BPO Company India", "BPO Services India", siteConfig.legalName],
+    alternateName: ["BPOlytix", "BPOLYTIX", "BPO Company India", "BPO Services India", siteConfig.legalName],
     url: siteConfig.url,
     description: siteConfig.description,
     inLanguage: "en-IN",
@@ -136,6 +137,7 @@ export function organizationJsonLd() {
     description: siteConfig.description,
     knowsAbout: [
       "BPO",
+      "BPOlytix",
       "BPO services",
       "BPO company India",
       "Business process outsourcing",

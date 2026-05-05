@@ -1,51 +1,46 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/seo";
 
+const PRIVATE = ["/dashboard", "/login", "/api/"];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Standard crawlers — full access except private routes
+      // ── Standard crawlers ─────────────────────────────────────────
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/dashboard", "/login", "/api/"],
+        disallow: PRIVATE,
       },
-      // Google Extended (AI Overviews / SGE) — allow so we appear in AI answers
+
+      // ── Google (web + AI Overviews / SGE) ────────────────────────
+      {
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: PRIVATE,
+      },
       {
         userAgent: "Google-Extended",
         allow: "/",
-        disallow: ["/dashboard", "/login", "/api/"],
+        disallow: PRIVATE,
       },
-      // OpenAI GPTBot — allow for ChatGPT / AEO visibility
+
+      // ── Bing ──────────────────────────────────────────────────────
       {
-        userAgent: "GPTBot",
+        userAgent: "Bingbot",
         allow: "/",
-        disallow: ["/dashboard", "/login", "/api/"],
+        disallow: PRIVATE,
       },
-      // Perplexity AI — allow for AI search answer visibility
-      {
-        userAgent: "PerplexityBot",
-        allow: "/",
-        disallow: ["/dashboard", "/login", "/api/"],
-      },
-      // Anthropic Claude — allow for AI answer visibility
-      {
-        userAgent: "ClaudeBot",
-        allow: "/",
-        disallow: ["/dashboard", "/login", "/api/"],
-      },
-      // Meta AI
-      {
-        userAgent: "FacebookBot",
-        allow: "/",
-        disallow: ["/dashboard", "/login", "/api/"],
-      },
-      // Apple Applebot-Extended (Apple Intelligence)
-      {
-        userAgent: "Applebot-Extended",
-        allow: "/",
-        disallow: ["/dashboard", "/login", "/api/"],
-      },
+
+      // ── AI assistants ─────────────────────────────────────────────
+      { userAgent: "GPTBot",           allow: "/", disallow: PRIVATE },
+      { userAgent: "ChatGPT-User",     allow: "/", disallow: PRIVATE },
+      { userAgent: "PerplexityBot",    allow: "/", disallow: PRIVATE },
+      { userAgent: "ClaudeBot",        allow: "/", disallow: PRIVATE },
+      { userAgent: "anthropic-ai",     allow: "/", disallow: PRIVATE },
+      { userAgent: "FacebookBot",      allow: "/", disallow: PRIVATE },
+      { userAgent: "Applebot-Extended",allow: "/", disallow: PRIVATE },
+      { userAgent: "cohere-ai",        allow: "/", disallow: PRIVATE },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,
     host: siteConfig.url,

@@ -11,6 +11,7 @@ export const metadata: Metadata = buildMetadata({
     "BPOlytix is India's leading BPO company offering BPO services including customer support, call center outsourcing, lead generation, and back-office processing. Pilot-first BPO model. Launch in 2–4 weeks.",
   path: "/",
   keywords: [
+    "bpolytix",
     "bpo",
     "bpo company",
     "bpo services",
